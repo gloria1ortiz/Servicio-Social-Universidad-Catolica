@@ -29,9 +29,9 @@ if(!isset($_SESSION['usuario'])){
         </p>
 
         <div class="menu-opciones">
-            <a href="#">Revisar cuántas horas tiene</a>
-            <a href="#">Revisar horas acumuladas y horas pendientes</a>
-            <a href="#">Disponibilidades para pagar el servicio social</a>
+        <a href="horas_actuales.php">Revisar cuántas horas tiene</a>
+        <a href="horas_detalle.php">Revisar horas acumuladas y horas pendientes</a>
+        <a href="disponibilidades.php">Disponibilidades para pagar el servicio social</a>
         </div>
 
         <br>
@@ -41,3 +41,4 @@ if(!isset($_SESSION['usuario'])){
 
 </body>
 </html>
+
