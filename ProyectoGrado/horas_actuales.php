@@ -6,8 +6,7 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
-// Aquí luego traerás datos de la base de datos
-$horas_actuales = 60; // ejemplo
+$horas_actuales = 60;
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +20,15 @@ $horas_actuales = 60; // ejemplo
 
 <div class="login-container">
     <div class="login-header">
-        Horas Actuales
+        ⏱ Horas Registradas
     </div>
 
     <div class="login-body">
-        <h3>Horas registradas:</h3>
-        <p><?php echo $horas_actuales; ?> horas</p>
+        <div class="card-info">
+            Usted ha registrado <strong><?php echo $horas_actuales; ?></strong> horas de servicio social.
+        </div>
 
-        <a href="dashboard.php">Volver al menú</a>
+        <a class="volver" href="dashboard.php">⬅ Volver al menú</a>
     </div>
 </div>
 
