@@ -1,127 +1,81 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #e6e6e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f2f2f2;
 }
 
-/* Contenedor principal */
 .login-container {
-    width: 400px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    width: 420px;
+    margin: 60px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-/* Encabezado verde */
 .login-header {
-    background-color: #0d7f3f;
+    background-color: #167a3f;
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
     font-size: 22px;
     font-weight: bold;
 }
 
-/* Cuerpo */
 .login-body {
-    padding: 30px;
+    padding: 25px;
 }
 
-/* Grupo de input */
-.input-group {
-    position: relative;
-    margin-bottom: 35px;
-}
-
-/* Input */
-.input-group input {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    padding: 18px 0 6px 0; /* espacio para el label arriba */
-    font-size: 14px;
-    outline: none;
-    background: transparent;
-    transition: 0.3s ease;
-}
-
-/* Línea verde cuando se hace clic */
-.input-group input:focus {
-    border-bottom: 2px solid #0d7f3f;
-}
-
-/* Label arriba fijo */
-.input-group label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 13px;
-    color: #9e9e9e; /* gris suave */
-    transition: 0.3s ease;
-}
-
-/* Cambia a verde cuando el input está activo */
-.input-group input:focus + label {
-    color: #0d7f3f;
-}
-
-/* Botón */
-.btn-login {
-    background-color: #757575;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 10px;
-    width: 100%;
-    transition: 0.3s ease;
-}
-
-.btn-login:hover {
-    background-color: #5f5f5f;
-}
-
-/* Texto informativo */
-.info-text {
-    font-size: 13px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Links */
-.links {
-    margin-top: 10px;
-    text-align: center;
-}
-
-.links a {
-    color: #1a73e8;
-    text-decoration: none;
-    display: block;
-    margin-top: 5px;
-    font-size: 14px;
-}
-
-.links a:hover {
-    text-decoration: underline;
-}
-
-/* Menú opciones */
 .menu-opciones a {
     display: block;
-    background-color: #0d7f3f;
-    color: white;
-    padding: 10px;
-    margin-top: 10px;
     text-decoration: none;
+    background-color: #167a3f;
+    color: white;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 8px;
     text-align: center;
+    font-weight: 500;
     transition: 0.3s ease;
 }
 
 .menu-opciones a:hover {
-    background-color: #0b6a34;
+    background-color: #0f5a2c;
+    transform: scale(1.03);
+}
+
+/* Barra de progreso */
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    height: 25px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #28a745;
+    text-align: center;
+    color: white;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.card-info {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 6px solid #167a3f;
+}
+
+.volver {
+    text-decoration: none;
+    color: #167a3f;
+    font-weight: bold;
+}
+
+.volver:hover {
+    text-decoration: underline;
 }
