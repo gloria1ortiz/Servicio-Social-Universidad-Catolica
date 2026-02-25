@@ -8,6 +8,7 @@ if(!isset($_SESSION['usuario'])){
 
 $horas_acumuladas = 60;
 $horas_requeridas = 120;
+$porcentaje = ($horas_acumuladas / $horas_requeridas) * 100;
 $horas_pendientes = $horas_requeridas - $horas_acumuladas;
 ?>
 
@@ -22,15 +23,26 @@ $horas_pendientes = $horas_requeridas - $horas_acumuladas;
 
 <div class="login-container">
     <div class="login-header">
-        Detalle de Servicio Social
+        📊 Progreso Servicio Social
     </div>
 
     <div class="login-body">
-        <p>Horas acumuladas: <?php echo $horas_acumuladas; ?></p>
-        <p>Horas requeridas: <?php echo $horas_requeridas; ?></p>
-        <p>Horas pendientes: <?php echo $horas_pendientes; ?></p>
 
-        <a href="dashboard.php">Volver al menú</a>
+        <div class="card-info">
+            <strong>Horas acumuladas:</strong> <?php echo $horas_acumuladas; ?> horas
+        </div>
+
+        <div class="card-info">
+            <strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" style="width: <?php echo $porcentaje; ?>%;">
+                <?php echo round($porcentaje); ?>%
+            </div>
+        </div>
+
+        <a class="volver" href="dashboard.php">⬅ Volver al menú</a>
     </div>
 </div>
 
