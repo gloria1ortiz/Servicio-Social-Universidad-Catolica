@@ -49,8 +49,14 @@ if(!isset($_SESSION['usuario'])){
     </a>
 
 </div>
-
+<script>
+    setTimeout(function(){
+        alert("Sesión cerrada por inactividad");
+        window.location.href = "logout.php";
+    }, 300000); // 5 minutos
+</script>
 </body>
 </html>
+
 
 
