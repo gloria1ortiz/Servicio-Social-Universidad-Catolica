@@ -24,6 +24,26 @@ $horas_pendientes = $horas_requeridas - $horas_acumuladas;
 <div class="login-container">
     <div class="login-header">
         📊 Progreso Servicio Social
+        <div style="text-align:center; margin-top:20px;">
+    <div style="
+        width:120px;
+        height:120px;
+        border-radius:50%;
+        background: conic-gradient(
+            <?php echo $color; ?> <?php echo $porcentaje; ?>%,
+            #e0e0e0 <?php echo $porcentaje; ?>%
+        );
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:auto;
+        font-weight:bold;
+        font-size:18px;
+        color:#333;
+    ">
+        <?php echo round($porcentaje); ?>%
+    </div>
+
     </div>
 
     <div class="login-body">
