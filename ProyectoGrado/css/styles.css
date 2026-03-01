@@ -29,7 +29,7 @@ body {
 }
 
 .login-body {
-    padding: 25px;
+    color: #333;
 }
 
 .menu-opciones a {
@@ -90,6 +90,7 @@ body {
 .volver:hover {
     text-decoration: underline;
 }
+
 
 
 
