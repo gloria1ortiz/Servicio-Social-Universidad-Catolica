@@ -5,6 +5,12 @@
     <title>Portal Estudiantil</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+    <script>
+    setTimeout(function(){
+        alert("Sesión cerrada por inactividad");
+        window.location.href = "logout.php";
+    }, 300000); // 5 minutos
+</script>
 <body>
 
 <div class="login-container">
@@ -40,3 +46,4 @@
 
 </body>
 </html>
+
