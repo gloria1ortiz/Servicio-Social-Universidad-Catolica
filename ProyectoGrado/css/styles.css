@@ -37,8 +37,12 @@ body {
     text-align: center;
     font-weight: 500;
     transition: 0.3s ease;
+    
 }
-
+.menu-opciones a p {
+    margin: 5px 0 0 0;
+    font-weight: normal;
+}
 .menu-opciones a:hover {
     background-color: #0f5a2c;
     transform: scale(1.03);
@@ -79,3 +83,4 @@ body {
 .volver:hover {
     text-decoration: underline;
 }
+
