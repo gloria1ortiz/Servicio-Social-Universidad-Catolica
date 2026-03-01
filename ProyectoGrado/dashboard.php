@@ -29,16 +29,28 @@ if(!isset($_SESSION['usuario'])){
         </p>
 
         <div class="menu-opciones">
-        <a href="horas_actuales.php">Revisar cuántas horas tiene</a>
-        <a href="horas_detalle.php">Revisar horas acumuladas y horas pendientes</a>
-        <a href="disponibilidades.php">Disponibilidades para pagar el servicio social</a>
-        </div>
 
-        <br>
-        <a href="logout.php">Cerrar sesión</a>
-    </div>
+    <a href="horas_actuales.php">
+        ⏱ <br>
+        <strong>Horas Registradas</strong>
+        <p style="font-size:13px;">Consulta tus horas actuales</p>
+    </a>
+
+    <a href="horas_detalle.php">
+        📊 <br>
+        <strong>Progreso</strong>
+        <p style="font-size:13px;">Revisa horas acumuladas y pendientes</p>
+    </a>
+
+    <a href="disponibilidades.php">
+        💳 <br>
+        <strong>Opciones de Pago</strong>
+        <p style="font-size:13px;">Conoce las modalidades disponibles</p>
+    </a>
+
 </div>
 
 </body>
 </html>
+
 
