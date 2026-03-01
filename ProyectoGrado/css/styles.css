@@ -1,3 +1,9 @@
+<script>
+    setTimeout(function(){
+        alert("Sesión cerrada por inactividad");
+        window.location.href = "logout.php";
+    }, 300000); // 5 minutos
+</script>
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
@@ -83,4 +89,5 @@ body {
 .volver:hover {
     text-decoration: underline;
 }
+
 
