@@ -28,13 +28,6 @@ body {
     margin: -30px -30px 20px -30px;
 }
 
-.login-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
 
 .login-container button {
     width: 100%;
@@ -46,9 +39,7 @@ body {
     cursor: pointer;
 }
 
-.login-container button:hover {
-    background-color: #125c30;
-}
+
 .login-header {
     background-color: #167a3f;
     color: white;
@@ -117,9 +108,6 @@ body {
     font-weight: bold;
 }
 
-.volver:hover {
-    text-decoration: underline;
-}
 
 
 
