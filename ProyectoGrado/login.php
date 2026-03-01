@@ -1,5 +1,5 @@
 <?php
-$_SESSION['usuario'] = $usuario;
+$_SESSION['usuario'] = "Mayerly Ortiz";
 
 $usuario = $_POST['identificacion'] ?? '';
 $contrasena = $_POST['contrasena'] ?? '';
@@ -16,5 +16,6 @@ if($usuario === $usuario_valido && $contrasena === $contrasena_valida){
     echo "Credenciales incorrectas. <a href='index.php'>Volver</a>";
 }
 ?>
+
 
 
