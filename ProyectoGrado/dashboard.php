@@ -20,7 +20,8 @@ if(!isset($_SESSION['usuario'])){
     <div class="login-header">
         Registro de Servicio Social - UCP
     </div>
-
+<h1>Registro de Servicio Social - UCP</h1>
+    
     <div class="login-body">
         <h3>Bienvenido <?php echo $_SESSION['usuario']; ?></h3>
         <p>
@@ -57,6 +58,7 @@ if(!isset($_SESSION['usuario'])){
 </script>
 </body>
 </html>
+
 
 
 
