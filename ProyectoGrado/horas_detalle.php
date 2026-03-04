@@ -18,7 +18,7 @@ if($porcentaje < 50){
 }elseif($porcentaje < 80){
     $color = "#f39c12"; // naranja
 }else{
-    $color = "#2ecc71"; // verde
+    $color = "#f39c12"; // naranja
 }
 ?>
 
@@ -46,7 +46,7 @@ setTimeout(function(){
     </div>
 
     <div style="text-align:center; margin-top:20px;">
-        <a href="index.php" class="btn-volver">← Volver al menú</a>
+        <a href="index.php" class="btn-volver">
     </div>
 
     <!-- Círculo de progreso -->
