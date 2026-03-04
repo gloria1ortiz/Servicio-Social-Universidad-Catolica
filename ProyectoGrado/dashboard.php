@@ -22,8 +22,7 @@ if(!isset($_SESSION['usuario'])){
 
 <div class="login-container">
     <div class="login-header">
-        Registro de Servicio Social - UCP
-    </div>
+
 <h1>Registro de Servicio Social - UCP</h1>
     <div class="top-actions">
     <a href="index.php" class="btn-volver">← Volver al inicio</a>
@@ -66,6 +65,7 @@ if(!isset($_SESSION['usuario'])){
 </script>
 </body>
 </html>
+
 
 
 
