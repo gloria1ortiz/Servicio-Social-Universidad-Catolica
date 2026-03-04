@@ -147,6 +147,13 @@ body {
 .btn-volver:hover {
     background-color: #ffffff;
 }
+.btn-volver {
+    background-color: #167a3f; /* verde */
+    color: white; /* texto blanco */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
 
 
 
