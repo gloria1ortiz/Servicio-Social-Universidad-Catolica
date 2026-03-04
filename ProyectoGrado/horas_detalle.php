@@ -46,7 +46,7 @@ setTimeout(function(){
     </div>
 
     <div style="text-align:center; margin-top:20px;">
-        <a href="index.php" class="btn-volver">← Volver al menú
+        <a class="volver" href="dashboard.php">⬅ Volver al menú</a>
     </div>
 
     <!-- Círculo de progreso -->
