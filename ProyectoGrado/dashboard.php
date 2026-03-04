@@ -16,6 +16,10 @@ if(!isset($_SESSION['usuario'])){
 </head>
 <body>
 
+    <div style="text-align:right; padding:10px 20px;">
+    <a href="logout.php" class="btn-volver">Cerrar sesión</a>
+</div>
+
 <div class="login-container">
     <div class="login-header">
         Registro de Servicio Social - UCP
@@ -62,6 +66,7 @@ if(!isset($_SESSION['usuario'])){
 </script>
 </body>
 </html>
+
 
 
 
