@@ -122,7 +122,24 @@ body {
 .btn-volver:hover {
     background-color: #125c30;
 }
+.top-actions {
+    text-align: right;
+    padding: 15px 20px 0 0;
+}
 
+.btn-volver {
+    text-decoration: none;
+    background-color: #125c30;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #0e4724;
+}
 
 
 
