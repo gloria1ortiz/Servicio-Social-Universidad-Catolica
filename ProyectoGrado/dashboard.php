@@ -51,8 +51,8 @@ if(!isset($_SESSION['usuario'])){
     </a>
 
     <a href="disponibilidades.php">
-        💳 <br>
-        <strong>Opciones de Pago</strong>
+        📄 <br>
+        <strong>Modalidades disponibles</strong>
         <p style="font-size:13px;">Conoce las modalidades disponibles</p>
     </a>
 
@@ -65,6 +65,7 @@ if(!isset($_SESSION['usuario'])){
 </script>
 </body>
 </html>
+
 
 
 
