@@ -107,6 +107,21 @@ body {
     color: #167a3f;
     font-weight: bold;
 }
+.btn-volver {
+    display: inline-block;
+    margin: 20px;
+    padding: 8px 15px;
+    background-color: #167a3f;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #125c30;
+}
 
 
 
