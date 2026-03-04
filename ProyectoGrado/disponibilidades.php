@@ -30,9 +30,10 @@ if(!isset($_SESSION['usuario'])){
     <div class="login-body">
         <p>Actualmente existen las siguientes opciones:</p>
         <ul>
-            <li>Pago total del servicio social</li>
-            <li>Pago parcial (50%)</li>
-            <li>Convenio institucional</li>
+            <li>Biblioteca</li>
+            <li>CIE</li>
+            <li>Laboratorio</li>
+            <li>Eventos</li>
         </ul>
 
         <a href="dashboard.php">Volver al menú</a>
