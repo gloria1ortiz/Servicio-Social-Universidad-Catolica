@@ -6,7 +6,7 @@ session_start();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Biblioteca</title>
+    <title>Evwntos</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -15,7 +15,7 @@ session_start();
 <div class="dashboard-container">
 
     <div class="dashboard-header">
-        Módulo Biblioteca
+        Módulo Eventos
     </div>
 
     <div class="dashboard-body">
