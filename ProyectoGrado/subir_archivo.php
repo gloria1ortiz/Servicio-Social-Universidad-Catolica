@@ -2,37 +2,39 @@
 
 if(isset($_FILES['archivo'])){
 
-    $archivo = $_FILES['archivo']['name'];
-    $ruta_temporal = $_FILES['archivo']['tmp_name'];
-    $tipo = $_FILES['archivo']['type'];
-
-    // Limpiar nombre (sin espacios)
-    $archivo_limpio = str_replace(" ", "_", $archivo);
-
     // Crear carpeta si no existe
     if (!file_exists("uploads")) {
         mkdir("uploads", 0777, true);
     }
 
-    // Nombre final
-    $nombreNuevo = time() . "_" . $archivo_limpio;
-    $ruta_destino = "uploads/" . $nombreNuevo;
+    $total = count($_FILES['archivo']['name']);
 
-    // Validar tipo
-    if($tipo == "application/pdf" || 
-       $tipo == "image/jpeg" || 
-       $tipo == "image/png"){
+    for($i=0; $i < $total; $i++){
 
-        if(move_uploaded_file($ruta_temporal, $ruta_destino)){
-            echo "<h3> Archivo subido correctamente</h3>";
-            echo "<a href='pagos.php'>⬅ Volver a disponibilidades</a>";
-        } else {
-            echo "❌ Error al subir archivo";
+        $archivo = $_FILES['archivo']['name'][$i];
+        $ruta_temporal = $_FILES['archivo']['tmp_name'][$i];
+        $tipo = $_FILES['archivo']['type'][$i];
+
+        // Limpiar nombre
+        $archivo_limpio = str_replace(" ", "_", $archivo);
+        $nombreNuevo = time() . "_" . $archivo_limpio;
+
+        $ruta_destino = "uploads/" . $nombreNuevo;
+
+        // Validar tipo
+        if($tipo == "application/pdf" || 
+           $tipo == "image/jpeg" || 
+           $tipo == "image/png"){
+
+            move_uploaded_file($ruta_temporal, $ruta_destino);
         }
-
-    } else {
-        echo " Solo PDF o imágenes";
     }
 
+    echo "<h3>✅ Evidencias subidas correctamente</h3>";
+    echo "<a href='cie.php' class='btn-verde'>⬅ Volver a CIE</a>";
+
+} else {
+    echo "❌ No se recibieron archivos";
 }
+
 ?>
