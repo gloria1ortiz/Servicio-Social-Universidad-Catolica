@@ -30,7 +30,20 @@ if(isset($_FILES['archivo'])){
     } else {
         echo "Solo se permiten PDF o imágenes";
     }
+<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
+    <label class="btn-verde">
+        Seleccionar archivo
+        <input type="file" name="archivo" hidden required>
+    </label>
+
+    <br><br>
+
+    <button type="submit" class="btn-verde">
+        Subir evidencia
+    </button>
+
+</form>
 }
 
 ?>
