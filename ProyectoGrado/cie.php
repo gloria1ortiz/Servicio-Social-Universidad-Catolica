@@ -21,13 +21,6 @@
             <button type="submit" class="btn-verde">
                 Subir evidencia
             </button>
-
-        </form>
-
-        <!--  BOTÓN DE VOLVER -->
-        <div style="text-align:center; margin-top:20px;">
-            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
-        </div>
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
     
     <label>Subir evidencia (PDF o imagen):</label><br><br>
@@ -43,5 +36,12 @@
         Ver evidencia
     </a>
 <?php } ?> 
+        </form>
+
+        <!--  BOTÓN DE VOLVER -->
+        <div style="text-align:center; margin-top:20px;">
+            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        </div>
+
     </div>
 </div>
