@@ -6,47 +6,34 @@ if(isset($_FILES['archivo'])){
     $ruta_temporal = $_FILES['archivo']['tmp_name'];
     $tipo = $_FILES['archivo']['type'];
 
-    // Renombrar archivo (opcional pero recomendado)
-    $nombreNuevo = time() . "_" . $archivo;
-
+    // Crear carpeta si no existe
     if (!file_exists("uploads")) {
-    mkdir("uploads", 0777, true);
-}
-    // Ruta donde se guarda
+        mkdir("uploads", 0777, true);
+    }
+
+    // Renombrar archivo
+    $nombreNuevo = time() . "_" . $archivo;
     $ruta_destino = "uploads/" . $nombreNuevo;
 
-    // VALIDACIÓN DE TIPO
+    // Validar tipo
     if($tipo == "application/pdf" || 
        $tipo == "image/jpeg" || 
        $tipo == "image/png"){
 
         if(move_uploaded_file($ruta_temporal, $ruta_destino)){
-            echo "Archivo subido correctamente<br><br>";
-            echo "<a href='pagos.php'>Volver</a>";
+            echo "<h3>✅ Archivo subido correctamente</h3>";
+            echo "<br>";
+            echo "<a href='pagos.php' class='btn-verde'>⬅ Volver a disponibilidades</a>";
         } else {
-            echo "Error al subir archivo";
+            echo "❌ Error al subir archivo";
         }
 
     } else {
-        echo "Solo se permiten PDF o imágenes";
+        echo "⚠️ Solo se permiten PDF o imágenes";
     }
-    if(file_exists($ruta_destino)){
-    unlink($ruta_destino); // borra el anterior
-}
-<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-    <label class="btn-verde">
-        Seleccionar archivo
-        <input type="file" name="archivo" hidden required>
-    </label>
-
-    <br><br>
-
-    <button type="submit" class="btn-verde">
-        Subir evidencia
-    </button>
-
-</form>
+} else {
+    echo "❌ No se recibió archivo";
 }
 
 ?>
