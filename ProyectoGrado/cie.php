@@ -40,14 +40,14 @@ session_start();
             <br><br>
 
             <button type="submit" class="btn-verde">
-                Subir evidencia
+          
             </button>
 
         </form>
 
         <br>
 
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+       
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
     
     <label>Subir evidencia (PDF o imagen):</label><br><br>
@@ -63,6 +63,7 @@ session_start();
         Ver evidencia
     </a>
 <?php } ?> 
+         <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
     </div>
 
 </div>
