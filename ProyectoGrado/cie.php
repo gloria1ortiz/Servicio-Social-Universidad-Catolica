@@ -1,39 +1,33 @@
+<div class="login-container">
 
-<?php
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Cie</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-
-<div class="dashboard-container">
-
-    <div class="dashboard-header">
-        Módulo Cie
+    <div class="login-header">
+        CIE
     </div>
 
-    <div class="dashboard-body">
+    <div class="login-body">
 
-        <h3>Tareas disponibles</h3>
+        <p>Migración de cursos y revisión de contenidos</p>
 
-      <ul>
-    <li>Migración de cursos</li>
-    <li>Revisión de diseños</li>
-    <li>Apoyo en plataforma educativa</li>
-</ul>
+        <!--  AQUÍ VA EL FORMULARIO -->
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-        <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
+            <label class="btn-verde">
+                Seleccionar archivo
+                <input type="file" name="archivo" hidden required>
+            </label>
+
+            <br><br>
+
+            <button type="submit" class="btn-verde">
+                Subir evidencia
+            </button>
+
+        </form>
+
+        <!--  BOTÓN DE VOLVER -->
+        <div style="text-align:center; margin-top:20px;">
+            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        </div>
 
     </div>
-
 </div>
-
-</body>
-</html>
