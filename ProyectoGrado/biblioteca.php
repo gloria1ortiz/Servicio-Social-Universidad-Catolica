@@ -28,15 +28,21 @@ session_start();
             <li>Cuidado de la biblioteca</li>
         </ul>
  <p><strong>Adjuntar evidencia:</strong></p>
-
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-         
-      
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-    
-    <label>Subir evidencia (PDF o imagen):</label><br><br>
+
+    <label class="btn-verde">
+        Seleccionar archivos
+        <input type="file" name="archivo[]" multiple hidden required>
+    </label>
+
+    <br><br>
+
+    <button type="submit" class="btn-verde">
+        Subir evidencias
+    </button>
 
 </form>
+    
        <?php if(isset($archivo_subido)){ ?>
     <p>📄 Archivo subido:</p>
     <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
