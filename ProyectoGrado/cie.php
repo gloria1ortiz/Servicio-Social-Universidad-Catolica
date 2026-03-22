@@ -43,16 +43,14 @@ session_start();
     
     <input type="file" name="archivo" required><br><br>
     
-</form>
-            <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
     <label class="btn-verde">
         Seleccionar archivos
         <input type="file" name="archivo[]" multiple hidden required>
     </label>
 
-    <br>
-    <br>
+    <br><br>
 
     <button type="submit" class="btn-verde">
         Subir evidencias
