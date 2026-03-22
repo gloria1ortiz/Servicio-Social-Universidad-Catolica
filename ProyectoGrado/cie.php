@@ -30,13 +30,20 @@ session_start();
 
   <p><strong>Adjuntar evidencia:</strong></p>
 
-      <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-    
-    <label>Subir evidencia (PDF o imagen):</label><br><br>
-    
-    <input type="file" name="archivo" required><br><br>
-    
-    <button type="submit">Subir evidencia</button>
+    <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+
+    <label class="btn-verde">
+        Seleccionar archivos
+        <input type="file" name="archivo[]" multiple hidden required>
+    </label>
+
+    <br><br>
+
+    <button type="submit" class="btn-verde">
+        Subir evidencias
+    </button>
+
+</form>
 
        <?php if(isset($archivo_subido)){ ?>
     <p>📄 Archivo subido:</p>
