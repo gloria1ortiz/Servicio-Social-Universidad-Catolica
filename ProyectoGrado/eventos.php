@@ -28,7 +28,7 @@ session_start();
             <li>Actividades Varios</li>
         </ul>
 
-        <a href="dashboard.php" class="btn-volver">Volver al menú</a>
+       <a href="disponibilidades.php" class="btn-volver">Volver a disponibilidades</a>
 
     </div>
 
