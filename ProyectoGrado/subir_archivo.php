@@ -30,6 +30,9 @@ if(isset($_FILES['archivo'])){
     } else {
         echo "Solo se permiten PDF o imágenes";
     }
+    if(file_exists($ruta_destino)){
+    unlink($ruta_destino); // borra el anterior
+}
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
     <label class="btn-verde">
