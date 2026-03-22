@@ -28,6 +28,20 @@
         <div style="text-align:center; margin-top:20px;">
             <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
         </div>
+<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+    
+    <label>Subir evidencia (PDF o imagen):</label><br><br>
+    
+    <input type="file" name="archivo" required><br><br>
+    
+    <button type="submit">Subir evidencia</button>
 
+</form>
+       <?php if(isset($archivo_subido)){ ?>
+    <p>📄 Archivo subido:</p>
+    <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
+        Ver evidencia
+    </a>
+<?php } ?> 
     </div>
 </div>
