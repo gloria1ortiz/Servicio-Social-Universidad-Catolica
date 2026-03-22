@@ -30,13 +30,7 @@ session_start();
 
   <p><strong>Adjuntar evidencia:</strong></p>
 
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-            
-            <label class="btn-verde">
-    Seleccionar archivo
-    <input type="file" name="archivo" hidden required>
-</label>
-      
+          
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
     <br><br>
@@ -71,9 +65,4 @@ session_start();
 </body>
 </html>
 
-    </div>
-
-</div>
-
-</body>
-</html>
+  
