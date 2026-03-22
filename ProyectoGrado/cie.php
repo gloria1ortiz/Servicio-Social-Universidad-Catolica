@@ -38,14 +38,6 @@ session_start();
     
     <button type="submit">Subir evidencia</button>
 
-</form>
-
-    <label class="btn-verde">
-        Seleccionar archivo
-        <input type="file" name="archivo[]" multiple hidden required>
-    </label>
-
-</form>
        <?php if(isset($archivo_subido)){ ?>
     <p>📄 Archivo subido:</p>
     <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
