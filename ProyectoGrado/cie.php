@@ -30,14 +30,15 @@ session_start();
 
   <p><strong>Adjuntar evidencia:</strong></p>
 
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-            
-            <label class="btn-verde">
-    Seleccionar archivo
-    <input type="file" name="archivo" hidden required>
-</label>
-      
-<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+      <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+    
+    <label>Subir evidencia (PDF o imagen):</label><br><br>
+    
+    <input type="file" name="archivo" required><br><br>
+    
+    <button type="submit">Subir evidencia</button>
+
+</form>
 
     <label class="btn-verde">
         Seleccionar archivo
