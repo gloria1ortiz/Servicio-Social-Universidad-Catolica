@@ -28,27 +28,22 @@ session_start();
             <li>Apoyo en contenidos educativos</li>
         </ul>
 
-        <p><strong>Adjuntar evidencia:</strong></p>
+  <p><strong>Adjuntar evidencia:</strong></p>
 
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
             
             <label class="btn-verde">
-                Seleccionar archivo
-                <input type="file" name="archivo" hidden required>
-            </label>
+    Seleccionar archivo
+    <input type="file" name="archivo" hidden required>
+</label>
       
-      <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-
-    <label class="btn-verde">
-        Seleccionar archivos
-        <input type="file" name="archivo[]" multiple hidden required>
-    </label>
-
-    <br><br>
-
-    <button type="submit" class="btn-verde">
-        Subir evidencias
-    </button>
+<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+    
+    <label>Subir evidencia (PDF o imagen):</label><br><br>
+    
+    <input type="file" name="archivo" required><br><br>
+    
+    <button type="submit">Subir evidencia</button>
 
 </form>
        <?php if(isset($archivo_subido)){ ?>
@@ -57,7 +52,8 @@ session_start();
         Ver evidencia
     </a>
 <?php } ?> 
-         <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+
+                <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
     </div>
 
 </div>
