@@ -29,7 +29,7 @@ session_start();
     <li>Apoyo técnico</li>
 </ul>
 
-        <a href="disponibilidades.php" class="btn-volver">Volver a disponibilidades</a>
+        <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
 
     </div>
 
