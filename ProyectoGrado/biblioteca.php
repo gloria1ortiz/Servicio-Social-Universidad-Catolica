@@ -28,7 +28,7 @@ session_start();
             <li>Cuidado de la biblioteca</li>
         </ul>
 
-    <a href="biblioteca.php" class="btn-volver">Volver a disponibilidades</a>
+    <a href="biblioteca.php" class="btn-volver">Volver a disponibilidades para pagar</a>
 
     </div>
 
