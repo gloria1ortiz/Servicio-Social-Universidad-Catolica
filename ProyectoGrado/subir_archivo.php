@@ -9,6 +9,9 @@ if(isset($_FILES['archivo'])){
     // Renombrar archivo (opcional pero recomendado)
     $nombreNuevo = time() . "_" . $archivo;
 
+    if (!file_exists("uploads")) {
+    mkdir("uploads", 0777, true);
+}
     // Ruta donde se guarda
     $ruta_destino = "uploads/" . $nombreNuevo;
 
