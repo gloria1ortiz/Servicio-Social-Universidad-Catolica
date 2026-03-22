@@ -6,13 +6,16 @@ if(isset($_FILES['archivo'])){
     $ruta_temporal = $_FILES['archivo']['tmp_name'];
     $tipo = $_FILES['archivo']['type'];
 
+    // Limpiar nombre (sin espacios)
+    $archivo_limpio = str_replace(" ", "_", $archivo);
+
     // Crear carpeta si no existe
     if (!file_exists("uploads")) {
         mkdir("uploads", 0777, true);
     }
 
-    // Renombrar archivo
-    $nombreNuevo = time() . "_" . $archivo;
+    // Nombre final
+    $nombreNuevo = time() . "_" . $archivo_limpio;
     $ruta_destino = "uploads/" . $nombreNuevo;
 
     // Validar tipo
@@ -21,19 +24,15 @@ if(isset($_FILES['archivo'])){
        $tipo == "image/png"){
 
         if(move_uploaded_file($ruta_temporal, $ruta_destino)){
-            echo "<h3>✅ Archivo subido correctamente</h3>";
-            echo "<br>";
-            echo "<a href='pagos.php' class='btn-verde'>⬅ Volver a disponibilidades</a>";
+            echo "<h3> Archivo subido correctamente</h3>";
+            echo "<a href='pagos.php'>⬅ Volver a disponibilidades</a>";
         } else {
             echo "❌ Error al subir archivo";
         }
 
     } else {
-        echo "⚠️ Solo se permiten PDF o imágenes";
+        echo " Solo PDF o imágenes";
     }
 
-} else {
-    echo "❌ No se recibió archivo";
 }
-
 ?>
