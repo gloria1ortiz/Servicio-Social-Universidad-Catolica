@@ -6,7 +6,7 @@ session_start();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Evwntos</title>
+    <title>Eventos</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -23,12 +23,31 @@ session_start();
         <h3>Tareas disponibles</h3>
 
         <ul>
-            <li>Actividades Deportivas</li>
-            <li>Grados</li>
-            <li>Actividades Varios</li>
+            <li>Apoyo logístico</li>
+            <li>Organización de eventos</li>
+            <li>Atención a participantes</li>
         </ul>
 
-       <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
+        <p><strong>Adjuntar evidencia:</strong></p>
+
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+            
+            <label class="btn-verde">
+                Seleccionar archivo
+                <input type="file" name="archivo" hidden required>
+            </label>
+
+            <br><br>
+
+            <button type="submit" class="btn-verde">
+                Subir evidencia
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
 
     </div>
 
@@ -36,4 +55,3 @@ session_start();
 
 </body>
 </html>
-
