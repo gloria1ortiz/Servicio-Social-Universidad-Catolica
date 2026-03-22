@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -23,13 +22,32 @@ session_start();
 
         <h3>Tareas disponibles</h3>
 
+        <ul>
+            <li>Inventario de equipos</li>
+            <li>Mantenimiento básico</li>
+            <li>Cuidado de herramientas</li>
+        </ul>
 
-        <li>Control de inventarios</li>
-    <li>Cuidado de equipos</li>
-    <li>Apoyo técnico</li>
-</ul>
+        <p><strong>Adjuntar evidencia:</strong></p>
 
-        <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+            
+            <label class="btn-verde">
+                Seleccionar archivo
+                <input type="file" name="archivo" hidden required>
+            </label>
+
+            <br><br>
+
+            <button type="submit" class="btn-verde">
+                Subir evidencia
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
 
     </div>
 
@@ -37,4 +55,3 @@ session_start();
 
 </body>
 </html>
-
