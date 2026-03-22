@@ -41,7 +41,12 @@ session_start();
     <button type="submit">Subir evidencia</button>
 
 </form>
-        
+       <?php if(isset($archivo_subido)){ ?>
+    <p>📄 Archivo subido:</p>
+    <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
+        Ver evidencia
+    </a>
+<?php } ?> 
     </div>
 
 </div>
