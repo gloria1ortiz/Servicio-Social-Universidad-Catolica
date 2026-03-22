@@ -27,11 +27,15 @@ session_start();
             <li>Organización de estanterías</li>
             <li>Cuidado de la biblioteca</li>
         </ul>
+ <p><strong>Adjuntar evidencia:</strong></p>
 
-    <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
-
-
-        
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+            
+            <label class="btn-verde">
+                Seleccionar archivo
+                <input type="file" name="archivo" hidden required>
+            </label>
+      
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
     
     <label>Subir evidencia (PDF o imagen):</label><br><br>
@@ -47,6 +51,8 @@ session_start();
         Ver evidencia
     </a>
 <?php } ?> 
+
+                <a href="pagos.php" class="btn-volver">Volver a disponibilidades</a>
     </div>
 
 </div>
