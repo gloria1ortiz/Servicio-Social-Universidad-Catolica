@@ -1,16 +1,37 @@
-<div class="login-container">
+<?php
+session_start();
+?>
 
-    <div class="login-header">
-        CIE
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CIE</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+        Módulo CIE
     </div>
 
-    <div class="login-body">
+    <div class="dashboard-body">
 
-        <p>Migración de cursos y revisión de contenidos</p>
+        <h3>Tareas disponibles</h3>
 
-        <!--  AQUÍ VA EL FORMULARIO -->
+        <ul>
+            <li>Migración de cursos</li>
+            <li>Revisión de diseños</li>
+            <li>Apoyo en contenidos educativos</li>
+        </ul>
+
+        <p><strong>Adjuntar evidencia:</strong></p>
+
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-
+            
             <label class="btn-verde">
                 Seleccionar archivo
                 <input type="file" name="archivo" hidden required>
@@ -21,27 +42,16 @@
             <button type="submit" class="btn-verde">
                 Subir evidencia
             </button>
-<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-    
-    <label>Subir evidencia (PDF o imagen):</label><br><br>
-    
-    <input type="file" name="archivo" required><br><br>
-    
-    <button type="submit">Subir evidencia</button>
 
-</form>
-       <?php if(isset($archivo_subido)){ ?>
-    <p>📄 Archivo subido:</p>
-    <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
-        Ver evidencia
-    </a>
-<?php } ?> 
         </form>
 
-        <!--  BOTÓN DE VOLVER -->
-        <div style="text-align:center; margin-top:20px;">
-            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
-        </div>
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
 
     </div>
+
 </div>
+
+</body>
+</html>
