@@ -29,7 +29,17 @@ session_start();
         </ul>
 
         <p><strong>Adjuntar evidencia:</strong></p>
+  <!-- Aquí podría ir el formulario de subida -->
 
+    <?php if(isset($_SESSION['archivos'])){ ?>
+        <h4 style="color:green;">✔ Evidencias cargadas:</h4>
+        <?php foreach($_SESSION['archivos'] as $archivo){ ?>
+            <div style="margin-bottom:10px;">
+                <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">📄 Ver</a>
+                <a href="eliminar.php?archivo=<?php echo $archivo; ?>" class="btn-verde">🗑 Eliminar</a>
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
             
             <label class="btn-verde">
@@ -44,17 +54,7 @@ session_start();
             </button>
 
         </form>
-  <!-- Aquí podría ir el formulario de subida -->
 
-    <?php if(isset($_SESSION['archivos'])){ ?>
-        <h4 style="color:green;">✔ Evidencias cargadas:</h4>
-        <?php foreach($_SESSION['archivos'] as $archivo){ ?>
-            <div style="margin-bottom:10px;">
-                <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">📄 Ver</a>
-                <a href="eliminar.php?archivo=<?php echo $archivo; ?>" class="btn-verde">🗑 Eliminar</a>
-        <br>
-
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
 
     </div>
 
