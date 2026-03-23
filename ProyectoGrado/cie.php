@@ -47,7 +47,7 @@ session_start();
 
 <br>
 
-<!-- 👇 AQUÍ VA LO QUE ME PREGUNTASTE -->
+<!--  AQUÍ VA LO QUE ME PREGUNTASTE -->
 <?php if(isset($_SESSION['archivos'])){ ?>
 
     <h4>📄 Evidencias subidas:</h4>
@@ -63,5 +63,5 @@ session_start();
 
 <?php } ?>
 
-<!-- 👇 BOTÓN VOLVER -->
+<!--  BOTÓN VOLVER -->
 <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
