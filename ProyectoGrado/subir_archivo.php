@@ -43,5 +43,16 @@ if(isset($_FILES['archivo'])){
 } else {
     echo "❌ No llegaron archivos";
 }
+   // 👇 GUARDAR EN SESIÓN
+                    $_SESSION['archivos'][] = $nombreNuevo;
+
+                }
+            }
+        }
+    }
+
+    header("Location: cie.php"); // vuelve al módulo
+    exit();
+}
 
 ?>
