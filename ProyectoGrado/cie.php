@@ -12,63 +12,36 @@ session_start();
 
 <body>
 
-<div class="dashboard-container">
+<div class="login-container">
 
-    <div class="dashboard-header">
-        Módulo CIE
+    <div class="login-header">
+        CIE
     </div>
 
-    <div class="dashboard-body">
+    <div class="login-body">
 
-        <h3>Tareas disponibles</h3>
+        <p>Migración de cursos y revisión de contenidos</p>
 
-        <ul>
-            <li>Migración de cursos</li>
-            <li>Revisión de diseños</li>
-            <li>Apoyo en contenidos educativos</li>
-        </ul>
+        <!-- AQUÍ VA EL FORMULARIO -->
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-        <p><strong>Adjuntar evidencia:</strong></p>
+            <label class="btn-verde">
+                Seleccionar archivo
+                <input type="file" name="archivo" hidden required>
+            </label>
 
-<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+            <br><br>
 
-    <label class="btn-verde">
-        Seleccionar archivos
-        <input type="file" name="archivo[]" multiple hidden required>
-    </label>
+            <button type="submit" class="btn-verde">
+                Subir evidencia
+            </button>
 
-    <br><br>
+        </form>
 
-    <button type="submit" class="btn-verde">
-        Subir evidencias
-    </button>
-
-</form>
-
-<br>
-
-<!--  AQUÍ VA LO QUE ME PREGUNTASTE -->
-<?php if(isset($_SESSION['archivos'])){ ?>
-
-    <h4 style="color:green;">✔ Evidencias cargadas:</h4>
-
-    <?php foreach($_SESSION['archivos'] as $archivo){ ?>
-
-        <div style="margin-bottom:10px;">
-
-            <!-- VER -->
-            <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">
-                📄 Ver
-            </a>
-
-            <!-- ELIMINAR -->
-            <a href="eliminar.php?archivo=<?php echo $archivo; ?>" class="btn-verde">
-                🗑 Eliminar
-            </a>
-
+        <!-- BOTÓN DE VOLVER -->
+        <div style="text-align:center; margin-top:20px;">
+            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
         </div>
 
-    <?php } ?>
-
-<?php } ?>
-<a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+    </div>
+</div>
