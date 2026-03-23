@@ -9,19 +9,15 @@ session_start();
     <title>CIE</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
 <div class="dashboard-container">
-
     <div class="dashboard-header">
         Módulo CIE
     </div>
 
     <div class="dashboard-body">
-
         <h3>Tareas disponibles</h3>
-
         <ul>
             <li>Migración de cursos</li>
             <li>Revisión de diseños</li>
@@ -29,36 +25,34 @@ session_start();
         </ul>
 
         <p><strong>Adjuntar evidencia:</strong></p>
-  <!-- Aquí podría ir el formulario de subida -->
 
-    <?php if(isset($_SESSION['archivos'])){ ?>
-        <h4 style="color:green;">✔ Evidencias cargadas:</h4>
-        <?php foreach($_SESSION['archivos'] as $archivo){ ?>
-            <div style="margin-bottom:10px;">
-                <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">📄 Ver</a>
-                <a href="eliminar.php?archivo=<?php echo $archivo; ?>" class="btn-verde">🗑 Eliminar</a>
-        <br>
-
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        <!-- Formulario de subida -->
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-            
             <label class="btn-verde">
                 Seleccionar archivo
                 <input type="file" name="archivo" hidden required>
             </label>
-
             <br><br>
-
             <button type="submit" class="btn-verde">
                 Subir evidencia
             </button>
-
         </form>
 
+        <!-- Lista de archivos subidos (si existen) -->
+        <?php if (isset($_SESSION['archivos']) && !empty($_SESSION['archivos'])): ?>
+            <h4 style="color:green;">✔ Evidencias cargadas:</h4>
+            <?php foreach ($_SESSION['archivos'] as $archivo): ?>
+                <div style="margin-bottom:10px;">
+                    <a href="uploads/<?php echo htmlspecialchars($archivo); ?>" target="_blank" class="btn-verde">📄 Ver</a>
+                    <a href="eliminar.php?archivo=<?php echo urlencode($archivo); ?>" class="btn-verde">🗑 Eliminar</a>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
 
-    </div>
-
-</div>
+        <br>
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+    </div> <!-- .dashboard-body -->
+</div> <!-- .dashboard-container -->
 
 </body>
 </html>
