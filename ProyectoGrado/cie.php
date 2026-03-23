@@ -12,19 +12,26 @@ session_start();
 
 <body>
 
-<div class="login-container">
+<div class="dashboard-container">
 
-    <div class="login-header">
-        CIE
+    <div class="dashboard-header">
+        Módulo CIE
     </div>
 
-    <div class="login-body">
+    <div class="dashboard-body">
 
-        <p>Migración de cursos y revisión de contenidos</p>
+        <h3>Tareas disponibles</h3>
 
-        <!-- AQUÍ VA EL FORMULARIO -->
+        <ul>
+            <li>Migración de cursos</li>
+            <li>Revisión de diseños</li>
+            <li>Apoyo en contenidos educativos</li>
+        </ul>
+
+        <p><strong>Adjuntar evidencia:</strong></p>
+
         <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-
+            
             <label class="btn-verde">
                 Seleccionar archivo
                 <input type="file" name="archivo" hidden required>
@@ -38,10 +45,13 @@ session_start();
 
         </form>
 
-        <!-- BOTÓN DE VOLVER -->
-        <div style="text-align:center; margin-top:20px;">
-            <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
-        </div>
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
 
     </div>
+
 </div>
+
+</body>
+</html>
