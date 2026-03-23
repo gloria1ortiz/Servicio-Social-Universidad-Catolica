@@ -1,57 +1,45 @@
 <?php
+session_start();
 
-if(isset($_FILES['archivo'])){
-
+if (isset($_FILES['archivo'])) {
+    // Crear carpeta uploads si no existe
     if (!file_exists("uploads")) {
         mkdir("uploads", 0777, true);
     }
 
-    $total = count($_FILES['archivo']['name']);
+    $archivo = $_FILES['archivo'];
+    $nombre = $archivo['name'];
+    $tmp = $archivo['tmp_name'];
+    $tipo = $archivo['type'];
 
-    for($i = 0; $i < $total; $i++){
+    if ($nombre != "") {
+        $nombre_limpio = str_replace(" ", "_", $nombre);
+        $nombre_nuevo = time() . "_" . $nombre_limpio;
+        $ruta_destino = __DIR__ . "/uploads/" . $nombre_nuevo;
 
-        $archivo = $_FILES['archivo']['name'][$i];
-        $ruta_temporal = $_FILES['archivo']['tmp_name'][$i];
-        $tipo = $_FILES['archivo']['type'][$i];
-
-        if($archivo != ""){
-
-            $archivo_limpio = str_replace(" ", "_", $archivo);
-            $nombreNuevo = time() . "_" . $archivo_limpio;
-
-            $ruta_destino = __DIR__ . "/uploads/" . $nombreNuevo;
-
-            if($tipo == "application/pdf" || 
-               $tipo == "image/jpeg" || 
-               $tipo == "image/png"){
-
-                if(move_uploaded_file($ruta_temporal, $ruta_destino)){
-                    echo "✅ Archivo subido: " . $nombreNuevo . "<br>";
-                } else {
-                    echo "❌ Error moviendo archivo<br>";
+        $tipos_permitidos = ["application/pdf", "image/jpeg", "image/png"];
+        if (in_array($tipo, $tipos_permitidos)) {
+            if (move_uploaded_file($tmp, $ruta_destino)) {
+                // Guardar en sesión
+                if (!isset($_SESSION['archivos'])) {
+                    $_SESSION['archivos'] = [];
                 }
-
+                $_SESSION['archivos'][] = $nombre_nuevo;
+                $_SESSION['mensaje'] = "✅ Archivo subido correctamente.";
             } else {
-                echo "⚠️ Tipo no permitido<br>";
+                $_SESSION['mensaje'] = "❌ Error al mover el archivo.";
             }
-
+        } else {
+            $_SESSION['mensaje'] = "⚠️ Tipo de archivo no permitido (solo PDF, JPG, PNG).";
         }
+    } else {
+        $_SESSION['mensaje'] = "❌ No se seleccionó ningún archivo.";
     }
-
-    echo "<br><a href='cie.php'>⬅ Volver a CIE</a>";
-
 } else {
-    echo "❌ No llegaron archivos";
-}
-   // 👇 GUARDAR EN SESIÓN
-                    $_SESSION['archivos'][] = $nombreNuevo;
-
-            }
-        }
-    }
-
-    header("Location: cie.php"); // vuelve al módulo
-    exit();
+    $_SESSION['mensaje'] = "❌ No llegaron archivos.";
 }
 
+// Redirigir de vuelta al módulo CIE
+header("Location: cie.php");
+exit();
 ?>
