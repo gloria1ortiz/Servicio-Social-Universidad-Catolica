@@ -50,21 +50,25 @@ session_start();
 <!--  AQUÍ VA LO QUE ME PREGUNTASTE -->
 <?php if(isset($_SESSION['archivos'])){ ?>
 
-    <h4>📄 Evidencias subidas:</h4>
+    <h4 style="color:green;">✔ Evidencias cargadas:</h4>
 
     <?php foreach($_SESSION['archivos'] as $archivo){ ?>
 
-        <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">
-            Ver evidencia
-        </a>
-        <a href="cie.php" class="btn-verde">
-    🔄 Editar
-</a>
-        <br><br>
+        <div style="margin-bottom:10px;">
+
+            <!-- VER -->
+            <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">
+                📄 Ver
+            </a>
+
+            <!-- ELIMINAR -->
+            <a href="eliminar.php?archivo=<?php echo $archivo; ?>" class="btn-verde">
+                🗑 Eliminar
+            </a>
+
+        </div>
 
     <?php } ?>
 
 <?php } ?>
-
-<!--  BOTÓN VOLVER -->
 <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
