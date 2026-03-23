@@ -57,6 +57,9 @@ session_start();
         <a href="uploads/<?php echo $archivo; ?>" target="_blank" class="btn-verde">
             Ver evidencia
         </a>
+        <a href="cie.php" class="btn-verde">
+    🔄 Editar
+</a>
         <br><br>
 
     <?php } ?>
