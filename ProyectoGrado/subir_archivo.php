@@ -46,7 +46,6 @@ if(isset($_FILES['archivo'])){
    // 👇 GUARDAR EN SESIÓN
                     $_SESSION['archivos'][] = $nombreNuevo;
 
-                }
             }
         }
     }
