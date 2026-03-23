@@ -37,20 +37,29 @@ $porcentaje = ($horas_acumuladas / $horas_requeridas) * 100;
             <li>Convenio institucional</li>
         </ul>
 
-        <!-- 🔽 AQUÍ VAN  MÓDULOS  -->
-           <div class="modulos-grid">
-            <a href="biblioteca.php" class="modulo-card">📚 Biblioteca</a>
-            <a href="cie.php" class="modulo-card">📁 CIE</a>
-            <a href="laboratorio.php" class="modulo-card">🔬 Laboratorio</a>
-            <a href="eventos.php" class="modulo-card">📅 Eventos</a>
-        </div>
-        <!-- BOTÓN -->
-        <div style="text-align:center; margin-top:20px;">
-            <a href="dashboard.php" class="btn-volver">Volver al menú</a>
+            <!-- Módulos como botones verdes con descripción -->
+        <div class="modulos-grid">
+            <a href="biblioteca.php" class="modulo-card">
+                <strong>📚 Biblioteca</strong><br>
+                <span class="descripcion-modulo">Entrega de libros y organización</span>
+            </a>
+            <a href="cie.php" class="modulo-card">
+                <strong>📁 CIE</strong><br>
+                <span class="descripcion-modulo">Migración de cursos y revisión</span>
+            </a>
+            <a href="laboratorio.php" class="modulo-card">
+                <strong>🔬 Laboratorio</strong><br>
+                <span class="descripcion-modulo">Inventarios y cuidado de equipos</span>
+            </a>
+            <a href="eventos.php" class="modulo-card">
+                <strong>📅 Eventos</strong><br>
+                <span class="descripcion-modulo">Apoyo en actividades</span>
+            </a>
         </div>
 
+        <br>
+        <a href="dashboard.php" class="btn-verde">⬅ Volver al menú</a>
     </div>
 </div>
-
 </body>
 </html>
