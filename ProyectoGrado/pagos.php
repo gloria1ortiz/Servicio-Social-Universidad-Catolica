@@ -38,30 +38,12 @@ $porcentaje = ($horas_acumuladas / $horas_requeridas) * 100;
         </ul>
 
         <!-- 🔽 AQUÍ VAN  MÓDULOS  -->
-        <div class="menu-opciones">
-
-            <a href="biblioteca.php">
-                Biblioteca
-                <p>Entrega de libros y organización</p>
-            </a>
-
-            <a href="cie.php">
-                CIE
-                <p>Migración de cursos y revisión</p>
-            </a>
-
-            <a href="laboratorio.php">
-                Laboratorio
-                <p>Inventarios y cuidado de equipos</p>
-            </a>
-
-            <a href="eventos.php">
-                Eventos
-                <p>Apoyo en actividades</p>
-            </a>
-
+           <div class="modulos-grid">
+            <a href="biblioteca.php" class="modulo-card">📚 Biblioteca</a>
+            <a href="cie.php" class="modulo-card">📁 CIE</a>
+            <a href="laboratorio.php" class="modulo-card">🔬 Laboratorio</a>
+            <a href="eventos.php" class="modulo-card">📅 Eventos</a>
         </div>
-
         <!-- BOTÓN -->
         <div style="text-align:center; margin-top:20px;">
             <a href="dashboard.php" class="btn-volver">Volver al menú</a>
