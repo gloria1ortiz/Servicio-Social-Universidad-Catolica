@@ -31,6 +31,18 @@ session_start();
         <p><strong>Adjuntar evidencia:</strong></p>
 <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
+    <p><strong>Selecciona la actividad:</strong></p>
+
+    <select name="modulo" required>
+        <option value="">-- Seleccionar --</option>
+        <option value="CIE">CIE</option>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Eventos">Eventos</option>
+        <option value="Biblioteca">Biblioteca</option>
+    </select>
+
+    <br><br>
+
     <label class="btn-verde">
         Seleccionar archivos
         <input type="file" name="archivo[]" multiple hidden required>
@@ -39,27 +51,7 @@ session_start();
     <br><br>
 
     <button type="submit" class="btn-verde">
-        Subir evidencias
+        Guardar evidencia
     </button>
 
 </form>
-       <?php if(isset($archivo_subido)){ ?>
-    <p>📄 Archivo subido:</p>
-    <a href="uploads/<?php echo $archivo_subido; ?>" target="_blank" class="btn-verde">
-        Ver evidencia
-    </a>
-<?php } ?> 
-         <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
-    </div>
-
-</div>
-
-</body>
-</html>
-
-    </div>
-
-</div>
-
-</body>
-</html>
