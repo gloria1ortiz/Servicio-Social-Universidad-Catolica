@@ -46,7 +46,33 @@ session_start();
         <input type="file" name="archivo[]" multiple hidden required>
     </label>
 
-    <br><br>
+    <br>
+      <br>
+
+<?php if(isset($_SESSION['evidencias'])){ ?>
+
+    <h3>📄 Evidencias registradas</h3>
+
+    <?php foreach($_SESSION['evidencias'] as $e){ ?>
+
+        <?php if($e['modulo'] == "CIE"){ ?>
+
+            <div style="margin-bottom:10px;">
+                
+                <strong>Módulo:</strong> <?php echo $e['modulo']; ?><br>
+
+                <a href="uploads/<?php echo $e['archivo']; ?>" target="_blank" class="btn-verde">
+                    📄 Ver evidencia
+                </a>
+
+            </div>
+
+        <?php } ?>
+
+    <?php } ?>
+
+<?php } ?>     
+    <br>
 
     <button type="submit" class="btn-verde">
         Guardar evidencia
