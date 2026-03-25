@@ -1,46 +1,32 @@
 <?php
 session_start();
 
-if(isset($_FILES['archivo']) && isset($_POST['modulo'])){
-
-    $modulo = $_POST['modulo'];
+if(isset($_FILES['archivo'])){
 
     if (!file_exists("uploads")) {
         mkdir("uploads", 0777, true);
     }
 
-    $total = count($_FILES['archivo']['name']);
+    foreach($_FILES['archivo']['name'] as $key => $nombre){
 
-    for($i = 0; $i < $total; $i++){
+        $tmp = $_FILES['archivo']['tmp_name'][$key];
+        $nombre_limpio = str_replace(" ", "_", $nombre);
+        $nuevo_nombre = time() . "_" . $nombre_limpio;
 
-        $archivo = $_FILES['archivo']['name'][$i];
-        $ruta_temporal = $_FILES['archivo']['tmp_name'][$i];
-        $tipo = $_FILES['archivo']['type'][$i];
+        $ruta = "uploads/" . $nuevo_nombre;
 
-        if($archivo != ""){
+        if(move_uploaded_file($tmp, $ruta)){
 
-            $archivo_limpio = str_replace(" ", "_", $archivo);
-            $nombreNuevo = time() . "_" . $archivo_limpio;
+            $_SESSION['evidencias'][] = [
+                "modulo" => $_POST['modulo'],
+                "archivo" => $nuevo_nombre
+            ];
 
-            $ruta_destino = "uploads/" . $nombreNuevo;
-
-            if($tipo == "application/pdf" || 
-               $tipo == "image/jpeg" || 
-               $tipo == "image/png"){
-
-                if(move_uploaded_file($ruta_temporal, $ruta_destino)){
-
-                    // 👇 GUARDAR ARCHIVO + MÓDULO
-                    $_SESSION['evidencias'][] = [
-                        'archivo' => $nombreNuevo,
-                        'modulo' => $modulo
-                    ];
-                }
-            }
         }
     }
 
-    header("Location: cie.php");
-    exit();
+    $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
 }
-?>
+
+header("Location: cie.php");
+exit();
