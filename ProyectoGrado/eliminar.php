@@ -4,19 +4,22 @@ session_start();
 if(isset($_GET['archivo'])){
 
     $archivo = $_GET['archivo'];
-    $ruta = "uploads/" . $archivo;
 
-    // Borrar archivo físico
+    // BORRAR DEL ARRAY
+    foreach($_SESSION['evidencias'] as $key => $e){
+        if($e['archivo'] == $archivo){
+            unset($_SESSION['evidencias'][$key]);
+        }
+    }
+
+    // BORRAR ARCHIVO FÍSICO
+    $ruta = "uploads/" . $archivo;
     if(file_exists($ruta)){
         unlink($ruta);
     }
 
-    // Borrar de la sesión
-    if(($key = array_search($archivo, $_SESSION['archivos'])) !== false){
-        unset($_SESSION['archivos'][$key]);
-    }
-
-    header("Location: cie.php");
-    exit();
+    $_SESSION['mensaje'] = "🗑 Archivo eliminado correctamente";
 }
-?>
+
+header("Location: cie.php");
+exit();
