@@ -29,28 +29,83 @@ session_start();
         </ul>
 
         <p><strong>Adjuntar evidencia:</strong></p>
-<form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-    <p><strong>Selecciona la actividad:</strong></p>
+        <!-- MENSAJE -->
+        <?php if (isset($_SESSION['mensaje'])): ?>
+            <div style="padding: 10px; background: #f0f0f0; margin-bottom: 15px;">
+                <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
+            </div>
+        <?php endif; ?>
 
-    <select name="modulo" required>
-        <option value="">-- Seleccionar --</option>
-        <option value="Apoyo logístico">Apoyo logístico</option>
-        <option value="Organización de eventos">Organización de eventos</option>
-        <option value="Atención a participantes">Atención a participantes</option>
-         </select>
+        <!-- FORMULARIO -->
+        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-    <br><br>
+            <p><strong>Selecciona la actividad:</strong></p>
 
-    <label class="btn-verde">
-        Seleccionar archivos
-        <input type="file" name="archivo[]" multiple hidden required>
-    </label>
+            <select name="modulo" required>
+                <option value="">-- Seleccionar --</option>
+                <option value="Apoyo logístico">Apoyo logístico</option>
+                <option value="Organización de eventos">Organización de eventos</option>
+                <option value="Atención a participantes">Atención a participantes</option>
+            </select>
 
-    <br><br>
+            <br><br>
 
-    <button type="submit" class="btn-verde">
-        Guardar evidencia
-    </button>
+            <label class="btn-verde">
+                Seleccionar archivos
+                <input type="file" name="archivo[]" multiple hidden required>
+            </label>
 
-</form>
+            <br><br>
+
+            <button type="submit" class="btn-verde">
+                Guardar evidencia
+            </button>
+
+        </form>
+
+        <br>
+
+        <!-- MOSTRAR -->
+        <?php if(isset($_SESSION['evidencias'])){ ?>
+
+            <h3>📄 Evidencias registradas</h3>
+
+            <?php foreach($_SESSION['evidencias'] as $e){ ?>
+
+                <?php if(
+                    $e['modulo'] == "Apoyo logístico" ||
+                    $e['modulo'] == "Organización de eventos" ||
+                    $e['modulo'] == "Atención a participantes"
+                ){ ?>
+
+                    <div style="margin-bottom:15px;">
+
+                        <strong>Actividad:</strong> <?php echo $e['modulo']; ?><br><br>
+
+                        <a href="uploads/<?php echo $e['archivo']; ?>" target="_blank" class="btn-verde">
+                            📄 Ver
+                        </a>
+
+                        <a href="eliminar.php?archivo=<?php echo $e['archivo']; ?>" class="btn-verde">
+                            🗑 Eliminar
+                        </a>
+
+                    </div>
+
+                <?php } ?>
+
+            <?php } ?>
+
+        <?php } ?>
+
+        <br>
+
+        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
