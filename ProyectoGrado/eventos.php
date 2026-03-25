@@ -35,11 +35,10 @@ session_start();
 
     <select name="modulo" required>
         <option value="">-- Seleccionar --</option>
-        <option value="CIE">CIE</option>
-        <option value="Laboratorio">Laboratorio</option>
-        <option value="Eventos">Eventos</option>
-        <option value="Biblioteca">Biblioteca</option>
-    </select>
+        <option value="Apoyo logístico">Apoyo logístico</option>
+        <option value="Organización de eventos">Organización de eventos</option>
+        <option value="Atención a participantes">Atención a participantes</option>
+         </select>
 
     <br><br>
 
