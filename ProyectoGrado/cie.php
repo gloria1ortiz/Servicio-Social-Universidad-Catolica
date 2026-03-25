@@ -28,28 +28,29 @@ session_start();
             </div>
         <?php endif; ?>
 
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
-            <label class="btn-verde">
-                Seleccionar archivo
-                <input type="file" name="archivo" hidden required>
-            </label>
-            <br><br>
-            <button type="submit" class="btn-verde">Subir evidencia</button>
-        </form>
+       <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
 
-        <?php if (isset($_SESSION['archivos']) && !empty($_SESSION['archivos'])): ?>
-            <h4 style="color:green;">✔ Evidencias cargadas:</h4>
-            <?php foreach ($_SESSION['archivos'] as $archivo): ?>
-                <div style="margin-bottom:10px;">
-                    <a href="uploads/<?php echo htmlspecialchars($archivo); ?>" target="_blank" class="btn-verde">📄 Ver</a>
-                    <a href="eliminar.php?archivo=<?php echo urlencode($archivo); ?>" class="btn-verde">🗑 Eliminar</a>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+    <p><strong>Selecciona la actividad:</strong></p>
 
-        <br>
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
-    </div>
-</div>
-</body>
-</html>
+    <select name="modulo" required>
+        <option value="">-- Seleccionar --</option>
+        <option value="CIE">CIE</option>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Eventos">Eventos</option>
+        <option value="Biblioteca">Biblioteca</option>
+    </select>
+
+    <br><br>
+
+    <label class="btn-verde">
+        Seleccionar archivos
+        <input type="file" name="archivo[]" multiple hidden required>
+    </label>
+
+    <br><br>
+
+    <button type="submit" class="btn-verde">
+        Guardar evidencia
+    </button>
+
+</form>
