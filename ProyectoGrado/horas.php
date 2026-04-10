@@ -1,16 +1,18 @@
 <?php
 session_start();
 
+//  Validar sesión
 if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
 }
 
-include("conexion.php"); // conexión a la BD
+//  Conexión a la BD
+include("conexion.php");
 
 $usuario_id = $_SESSION['usuario'];
 
-// ✅ GUARDAR REGISTRO
+//  GUARDAR REGISTRO
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $fecha = $_POST['fecha'];
@@ -30,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_query($conexion, $sql_insert);
 }
 
-// ✅ CALCULAR HORAS AUTOMÁTICAMENTE
+//  CALCULAR HORAS AUTOMÁTICAMENTE
 $sql = "SELECT SUM(horas) as total FROM horas_servicio WHERE usuario_id = '$usuario_id'";
 $resultado = mysqli_query($conexion, $sql);
 $fila = mysqli_fetch_assoc($resultado);
@@ -84,7 +86,7 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
 
         <hr>
 
-        <!-- ✅ DETALLE DE SERVICIO -->
+        <!--  DETALLE DE SERVICIO -->
         <h3>Detalle de Servicio Social</h3>
 
         <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?> horas</p>
@@ -92,9 +94,6 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
         <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas</p>
 
         <hr>
-
-        <h3>Horas registradas:</h3>
-        <p><?php echo $horas_actuales; ?> horas</p>
 
         <a href="dashboard.php" class="btn-volver">Volver al menú</a>
 
