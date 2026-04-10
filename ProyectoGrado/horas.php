@@ -1,44 +1,56 @@
 <?php
 session_start();
 
-//  Validar sesión
+// VALIDAR SESIÓN
 if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
 }
 
-//  Conexión a la BD
+// OBTENER ID DEL USUARIO (AJUSTA SI TU SESIÓN USA OTRO NOMBRE)
+$usuario_id = $_SESSION['usuario'];
+
+// CONEXIÓN
 include("conexion.php");
 
 
-//  GUARDAR REGISTRO
+// GUARDAR REGISTRO
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $fecha = $_POST['fecha'];
     $actividad = $_POST['actividad'];
     $horas = $_POST['horas'];
 
-    // Guardar archivo
-    $nombre_archivo = $_FILES['evidencia']['name'];
-    $ruta = "uploads/" . $nombre_archivo;
+    // VALIDAR ARCHIVO
+    if(isset($_FILES['evidencia']) && $_FILES['evidencia']['error'] == 0){
 
-    move_uploaded_file($_FILES['evidencia']['tmp_name'], $ruta);
+        $nombre_archivo = $_FILES['evidencia']['name'];
+        $ruta = "uploads/" . $nombre_archivo;
 
-    // Insertar en BD
+        move_uploaded_file($_FILES['evidencia']['tmp_name'], $ruta);
+
+    } else {
+        $ruta = "";
+    }
+
+    // INSERTAR EN BD
     $sql_insert = "INSERT INTO horas_servicio (usuario_id, fecha, actividad, horas, evidencia)
                    VALUES ('$usuario_id', '$fecha', '$actividad', '$horas', '$ruta')";
 
     mysqli_query($conexion, $sql_insert);
 }
 
-//  CALCULAR HORAS AUTOMÁTICAMENTE
+
+// CALCULAR HORAS
 $sql = "SELECT SUM(horas) as total FROM horas_servicio WHERE usuario_id = '$usuario_id'";
 $resultado = mysqli_query($conexion, $sql);
 $fila = mysqli_fetch_assoc($resultado);
 
+// SI NO HAY REGISTROS
 $horas_actuales = $fila['total'] ? $fila['total'] : 0;
 
-//  PROGRESO
+
+// PROGRESO
 $horas_requeridas = 120;
 $horas_pendientes = $horas_requeridas - $horas_actuales;
 ?>
@@ -85,7 +97,6 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
 
         <hr>
 
-        <!--  DETALLE DE SERVICIO -->
         <h3>Detalle de Servicio Social</h3>
 
         <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?> horas</p>
