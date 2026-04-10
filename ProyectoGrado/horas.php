@@ -8,7 +8,7 @@ if(!isset($_SESSION['usuario'])){
 }
 
 //  Conexión a la BD
-include("../conexion.php");
+include(__DIR__ . "/../conexion.php");
 var_dump($conexion);
 $usuario_id = $_SESSION['usuario'];
 
