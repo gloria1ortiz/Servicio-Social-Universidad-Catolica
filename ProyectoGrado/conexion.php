@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "AQUI_TU_BASE");
+$conexion = mysqli_connect("localhost", "root", "", "proyecto_grado");
 
 if (!$conexion) {
     die("Error de conexión");
