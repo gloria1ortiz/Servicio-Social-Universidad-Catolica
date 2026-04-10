@@ -4,35 +4,42 @@ session_start();
 if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
-    include("conexion.php"); // tu conexión a MySQL
+}
 
+include("conexion.php"); // conexión a la BD
+
+$usuario_id = $_SESSION['usuario'];
+
+// ✅ GUARDAR REGISTRO
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $usuario_id = $_SESSION['usuario'];
     $fecha = $_POST['fecha'];
     $actividad = $_POST['actividad'];
     $horas = $_POST['horas'];
 
-    // guardar archivo
+    // Guardar archivo
     $nombre_archivo = $_FILES['evidencia']['name'];
     $ruta = "uploads/" . $nombre_archivo;
+
     move_uploaded_file($_FILES['evidencia']['tmp_name'], $ruta);
 
-    // insertar en BD
-    $sql = "INSERT INTO horas_servicio (usuario_id, fecha, actividad, horas, evidencia)
-            VALUES ('$usuario_id', '$fecha', '$actividad', '$horas', '$ruta')";
+    // Insertar en BD
+    $sql_insert = "INSERT INTO horas_servicio (usuario_id, fecha, actividad, horas, evidencia)
+                   VALUES ('$usuario_id', '$fecha', '$actividad', '$horas', '$ruta')";
 
-    mysqli_query($conexion, $sql);
+    mysqli_query($conexion, $sql_insert);
 }
-}
 
-$usuario_id = $_SESSION['usuario'];
-
+// ✅ CALCULAR HORAS AUTOMÁTICAMENTE
 $sql = "SELECT SUM(horas) as total FROM horas_servicio WHERE usuario_id = '$usuario_id'";
 $resultado = mysqli_query($conexion, $sql);
 $fila = mysqli_fetch_assoc($resultado);
 
 $horas_actuales = $fila['total'] ? $fila['total'] : 0;
+
+// ✅ PROGRESO
+$horas_requeridas = 120;
+$horas_pendientes = $horas_requeridas - $horas_actuales;
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +84,15 @@ $horas_actuales = $fila['total'] ? $fila['total'] : 0;
 
         <hr>
 
+        <!-- ✅ DETALLE DE SERVICIO -->
+        <h3>Detalle de Servicio Social</h3>
+
+        <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?> horas</p>
+        <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?> horas</p>
+        <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas</p>
+
+        <hr>
+
         <h3>Horas registradas:</h3>
         <p><?php echo $horas_actuales; ?> horas</p>
 
@@ -87,4 +103,3 @@ $horas_actuales = $fila['total'] ? $fila['total'] : 0;
 
 </body>
 </html>
-        
