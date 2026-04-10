@@ -10,8 +10,7 @@ if(!isset($_SESSION['usuario'])){
 //  Conexión a la BD
 include("conexion.php");
 
-var_dump($conexion);
-exit;
+
 //  GUARDAR REGISTRO
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -39,7 +38,7 @@ $fila = mysqli_fetch_assoc($resultado);
 
 $horas_actuales = $fila['total'] ? $fila['total'] : 0;
 
-// ✅ PROGRESO
+//  PROGRESO
 $horas_requeridas = 120;
 $horas_pendientes = $horas_requeridas - $horas_actuales;
 ?>
