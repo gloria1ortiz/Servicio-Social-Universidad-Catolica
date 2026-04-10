@@ -6,8 +6,7 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
-// Aquí luego traerás datos de la base de datos
-$horas_actuales = 60; // ejemplo
+$horas_actuales = 60;
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +24,41 @@ $horas_actuales = 60; // ejemplo
     </div>
 
     <div class="login-body">
+
+        <h3>Registra tus horas de servicio social</h3>
+
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            <label>Cantidad de horas:</label>
+            <input type="number" name="horas" min="1" placeholder="Ej: 4" required>
+
+            <label>Fecha:</label>
+            <input type="date" name="fecha" required>
+
+            <label>Actividad:</label>
+            <select name="actividad" required>
+                <option value="">Seleccione</option>
+                <option>Entrega de Libros en Biblioteca</option>
+                <option>Migración de Cursos</option>
+            </select>
+
+            <label>Evidencia:</label>
+            <input type="file" name="evidencia" required>
+
+            <button type="submit" class="btn-volver">Registrar horas</button>
+
+        </form>
+
+        <hr>
+
         <h3>Horas registradas:</h3>
         <p><?php echo $horas_actuales; ?> horas</p>
 
         <a href="dashboard.php" class="btn-volver">Volver al menú</a>
+
     </div>
 </div>
 
 </body>
 </html>
-
-
         
