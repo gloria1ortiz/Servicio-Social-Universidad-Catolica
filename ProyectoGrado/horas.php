@@ -9,9 +9,9 @@ if(!isset($_SESSION['usuario'])){
 
 //  Conexión a la BD
 include("conexion.php");
-var_dump($conexion);
-$usuario_id = $_SESSION['usuario'];
 
+var_dump($conexion);
+exit;
 //  GUARDAR REGISTRO
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
