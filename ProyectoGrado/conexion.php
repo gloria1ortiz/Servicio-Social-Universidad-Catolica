@@ -1,7 +1,7 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "proyecto_grado");
+$conexion = mysqli_connect("localhost", "root", "", "AQUI_TU_BASE");
 
 if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+    die("Error de conexión");
 }
 ?>
