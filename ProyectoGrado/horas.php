@@ -42,7 +42,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
 // CALCULAR HORAS
-$sql = "SELECT SUM(horas) as total FROM horas_servicio WHERE usuario_id = '$usuario_id'";
+$sql = "SELECT SUM(horas) as total FROM nombre_real WHERE usuario_id = '$usuario_id'";
 $resultado = mysqli_query($conexion, $sql);
 $fila = mysqli_fetch_assoc($resultado);
 
