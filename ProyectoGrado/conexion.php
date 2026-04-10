@@ -1,7 +1,7 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "Admin123*", "proyecto_grado");
+$conexion = mysqli_connect("localhost", "root", "", "tu_base_de_datos");
 
-if(!$conexion){
+if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
 ?>
