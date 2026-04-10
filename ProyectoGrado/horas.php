@@ -4,6 +4,26 @@ session_start();
 if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
+    include("conexion.php"); // tu conexión a MySQL
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    $usuario_id = $_SESSION['usuario'];
+    $fecha = $_POST['fecha'];
+    $actividad = $_POST['actividad'];
+    $horas = $_POST['horas'];
+
+    // guardar archivo
+    $nombre_archivo = $_FILES['evidencia']['name'];
+    $ruta = "uploads/" . $nombre_archivo;
+    move_uploaded_file($_FILES['evidencia']['tmp_name'], $ruta);
+
+    // insertar en BD
+    $sql = "INSERT INTO horas_servicio (usuario_id, fecha, actividad, horas, evidencia)
+            VALUES ('$usuario_id', '$fecha', '$actividad', '$horas', '$ruta')";
+
+    mysqli_query($conexion, $sql);
+}
 }
 
 $horas_actuales = 60;
