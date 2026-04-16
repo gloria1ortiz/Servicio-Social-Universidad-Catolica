@@ -6,9 +6,8 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
-$horas_acumuladas = 60;
-$horas_requeridas = 120;
-$horas_pendientes = $horas_requeridas - $horas_acumuladas;
+$horas_acumuladas = $_SESSION['horas_acumuladas'] ?? 0;
+$horas_requeridas = $_SESSION['horas_requeridas'] ?? 0;
 ?>
 
 
@@ -30,7 +29,7 @@ $horas_pendientes = $horas_requeridas - $horas_acumuladas;
  <!-- RESULTADOS -->
         <h3>Resumen</h3>
 
-        <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?></p>
+        <p><strong>Horas acumuladas:</strong> <?php echo $horas_acumuladas; ?></p>
         <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
         <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
         <a href="dashboard.php"class="btn-volver">Volver al menú</a>
