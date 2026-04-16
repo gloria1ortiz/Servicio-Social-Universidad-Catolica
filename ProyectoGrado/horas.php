@@ -7,12 +7,12 @@ if(!isset($_SESSION['usuario'])){
 }
 
 /* GUARDAR HORAS REQUERIDAS */
-if(isset($_POST['horas_requeridas'])){
+if(isset($_POST['guardar_config'])){
     $_SESSION['horas_requeridas'] = $_POST['horas_requeridas'];
 }
 
 /* REGISTRAR HORAS */
-if(isset($_POST['horas'])){
+if(isset($_POST['registrar_horas'])){
     $horas = $_POST['horas'];
 
     if(!isset($_SESSION['horas_acumuladas'])){
@@ -26,6 +26,12 @@ if(isset($_POST['horas'])){
 $horas_actuales = $_SESSION['horas_acumuladas'] ?? 0;
 $horas_requeridas = $_SESSION['horas_requeridas'] ?? 0;
 $horas_pendientes = max(0, $horas_requeridas - $horas_actuales);
+
+/* PORCENTAJE */
+$porcentaje = 0;
+if($horas_requeridas > 0){
+    $porcentaje = ($horas_actuales / $horas_requeridas) * 100;
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +58,7 @@ $horas_pendientes = max(0, $horas_requeridas - $horas_actuales);
             <label>Horas requeridas:</label><br>
             <input type="number" name="horas_requeridas" required><br><br>
 
-            <button type="submit" class="btn-verde">
+            <button type="submit" name="guardar_config" class="btn-verde">
                 Guardar configuración
             </button>
         </form>
@@ -79,7 +85,7 @@ $horas_pendientes = max(0, $horas_requeridas - $horas_actuales);
 
             <br><br>
 
-            <button type="submit" class="btn-volver">
+            <button type="submit" name="registrar_horas" class="btn-volver">
                 Registrar horas
             </button>
 
@@ -93,6 +99,13 @@ $horas_pendientes = max(0, $horas_requeridas - $horas_actuales);
         <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?> horas</p>
         <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?> horas</p>
         <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas</p>
+
+        <!-- BARRA DE PROGRESO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: <?php echo $porcentaje; ?>%;">
+                <?php echo round($porcentaje); ?>%
+            </div>
+        </div>
 
         <br>
 
