@@ -13,11 +13,10 @@ if(isset($_POST['horas_requeridas'])){
 
 /* REGISTRAR HORAS */
 if(isset($_POST['horas'])){
-    $_SESSION['horas_acumuladas'] = ($_SESSION['horas_acumuladas'] ?? 0) + $_POST['horas'];
-}
+    $horas = $_POST['horas'];
 
-if(isset($_POST['horas_requeridas'])){
-    $_SESSION['horas_requeridas'] = $_POST['horas_requeridas'];
+    if(!isset($_SESSION['horas_acumuladas'])){
+        $_SESSION['horas_acumuladas'] = 0;
     }
 
     $_SESSION['horas_acumuladas'] += $horas;
@@ -26,7 +25,7 @@ if(isset($_POST['horas_requeridas'])){
 /* VARIABLES */
 $horas_actuales = $_SESSION['horas_acumuladas'] ?? 0;
 $horas_requeridas = $_SESSION['horas_requeridas'] ?? 0;
-$horas_pendientes = $horas_requeridas - $horas_actuales;
+$horas_pendientes = max(0, $horas_requeridas - $horas_actuales);
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +38,7 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
 <body>
 
 <div class="login-container">
+
     <div class="login-header">
         Horas Actuales
     </div>
@@ -62,7 +62,7 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
         <!-- REGISTRAR HORAS -->
         <h3>Registrar horas de servicio social</h3>
 
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
 
             <label>Cantidad de horas:</label>
             <input type="number" name="horas" min="1" required>
@@ -77,8 +77,7 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
                 <option>Migración de Cursos</option>
             </select>
 
-            <label>Evidencia:</label>
-            <input type="file" name="evidencia" required>
+            <br><br>
 
             <button type="submit" class="btn-volver">
                 Registrar horas
@@ -88,11 +87,21 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
 
         <hr>
 
+        <!-- RESUMEN -->
+        <h3>Resumen</h3>
+
+        <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?> horas</p>
+        <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?> horas</p>
+        <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas</p>
+
+        <br>
+
         <a href="dashboard.php" class="btn-volver">
             Volver al menú
         </a>
 
     </div>
+
 </div>
 
 </body>
