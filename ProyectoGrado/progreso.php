@@ -26,11 +26,13 @@ $horas_pendientes = $horas_requeridas - $horas_acumuladas;
         Detalle de Servicio Social
     </div>
 
-    <div class="login-body">
-        <p>Horas acumuladas: <?php echo $horas_acumuladas; ?></p>
-        <p>Horas requeridas: <?php echo $horas_requeridas; ?></p>
-        <p>Horas pendientes: <?php echo $horas_pendientes; ?></p>
 
+ <!-- RESULTADOS -->
+        <h3>Resumen</h3>
+
+        <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?></p>
+        <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
+        <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
         <a href="dashboard.php"class="btn-volver">Volver al menú</a>
     </div>
     <div class="card-info">
