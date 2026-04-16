@@ -13,10 +13,11 @@ if(isset($_POST['horas_requeridas'])){
 
 /* REGISTRAR HORAS */
 if(isset($_POST['horas'])){
-    $horas = $_POST['horas'];
+    $_SESSION['horas_acumuladas'] = ($_SESSION['horas_acumuladas'] ?? 0) + $_POST['horas'];
+}
 
-    if(!isset($_SESSION['horas_acumuladas'])){
-        $_SESSION['horas_acumuladas'] = 0;
+if(isset($_POST['horas_requeridas'])){
+    $_SESSION['horas_requeridas'] = $_POST['horas_requeridas'];
     }
 
     $_SESSION['horas_acumuladas'] += $horas;
