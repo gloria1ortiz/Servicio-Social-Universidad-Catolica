@@ -6,11 +6,19 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
+// Obtener datos de sesión
 $horas_acumuladas = $_SESSION['horas_acumuladas'] ?? 0;
 $horas_requeridas = $_SESSION['horas_requeridas'] ?? 0;
+
+// Calcular horas pendientes
+$horas_pendientes = $horas_requeridas - $horas_acumuladas;
+
+// Calcular porcentaje
+$porcentaje = 0;
+if($horas_requeridas > 0){
+    $porcentaje = ($horas_acumuladas / $horas_requeridas) * 100;
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
