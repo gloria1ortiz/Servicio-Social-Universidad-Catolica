@@ -41,14 +41,6 @@ if($horas_requeridas > 0){
         <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
         <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
         <a href="dashboard.php"class="btn-volver">Volver al menú</a>
-    </div>
-    <div class="card-info">
-    <strong>Horas acumuladas:</strong> <?php echo $horas_acumuladas; ?> horas
-</div>
-
-<div class="card-info">
-    <strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?> horas
-</div>
 
 <div class="progress-container">
     <div class="progress-bar" style="width: <?php echo $porcentaje; ?>%;">
