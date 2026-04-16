@@ -87,13 +87,6 @@ $horas_pendientes = $horas_requeridas - $horas_actuales;
 
         <hr>
 
-        <!-- RESULTADOS -->
-        <h3>Resumen</h3>
-
-        <p><strong>Horas acumuladas:</strong> <?php echo $horas_actuales; ?></p>
-        <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
-        <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
-
         <a href="dashboard.php" class="btn-volver">
             Volver al menú
         </a>
