@@ -10,7 +10,8 @@ $contrasena_valida = "12345";
 
 if($usuario === $usuario_valido && $contrasena === $contrasena_valida){
 
-    $_SESSION['usuario'] = "Mayerly Ortiz";
+   $_SESSION['usuario'] = $usuario;
+   $_SESSION['rol'] = 'admin'; // o 'estudiante'
 
     header("Location: dashboard.php");
     exit();
