@@ -9,28 +9,27 @@ if(!isset($_SESSION['usuario'])){
 
 $usuario = $_SESSION['usuario'];
 
-/* GUARDAR HORAS REQUERIDAS */
-if($horas_actuales >= $horas_requeridas){
-    echo "<script>alert('Ya completaste tus horas 🎉');</script>";
-}else{
-    // guardar horas normalmente
-}
-if(isset($_POST['guardar_config'])){
-    $horas_requeridas = $_POST['horas_requeridas'];
 
-    // Verificar si ya existe
+   //GUARDAR HORAS REQUERIDAS
+
+if(isset($_POST['guardar_config'])){
+    $horas_requeridas_post = $_POST['horas_requeridas'];
+
     $check = mysqli_query($conexion, "SELECT * FROM configuracion WHERE usuario='$usuario'");
 
     if(mysqli_num_rows($check) > 0){
-        // actualizar
-        mysqli_query($conexion, "UPDATE configuracion SET horas_requeridas='$horas_requeridas' WHERE usuario='$usuario'");
+        mysqli_query($conexion, "UPDATE configuracion 
+                                SET horas_requeridas='$horas_requeridas_post' 
+                                WHERE usuario='$usuario'");
     }else{
-        // insertar
-        mysqli_query($conexion, "INSERT INTO configuracion (usuario, horas_requeridas) VALUES ('$usuario','$horas_requeridas')");
+        mysqli_query($conexion, "INSERT INTO configuracion (usuario, horas_requeridas) 
+                                VALUES ('$usuario','$horas_requeridas_post')");
     }
 }
 
-/* REGISTRAR HORAS */
+
+   //REGISTRAR HORAS
+
 if(isset($_POST['registrar_horas'])){
     $horas = $_POST['horas'];
     $fecha = $_POST['fecha'];
@@ -40,21 +39,28 @@ if(isset($_POST['registrar_horas'])){
     VALUES ('$usuario','$horas','$fecha','$actividad')");
 }
 
-/* CONSULTAR TOTAL HORAS */
-$resultado = mysqli_query($conexion, "SELECT SUM(horas) as total FROM horas WHERE usuario='$usuario'");
+
+   //CONSULTAR DATOS
+
+
+// TOTAL HORAS
+$resultado = mysqli_query($conexion, "SELECT SUM(horas) as total 
+                                     FROM horas 
+                                     WHERE usuario='$usuario'");
 $fila = mysqli_fetch_assoc($resultado);
 $total_horas = $fila['total'] ?? 0;
 
-/* CONSULTAR HORAS REQUERIDAS */
-$config = mysqli_query($conexion, "SELECT horas_requeridas FROM configuracion WHERE usuario='$usuario'");
+// HORAS REQUERIDAS
+$config = mysqli_query($conexion, "SELECT horas_requeridas 
+                                  FROM configuracion 
+                                  WHERE usuario='$usuario'");
 $fila_config = mysqli_fetch_assoc($config);
 $horas_requeridas = $fila_config['horas_requeridas'] ?? 0;
+
+// CALCULAR PENDIENTES
+$horas_pendientes = max(0, $horas_requeridas - $total_horas);
+
 ?>
-<?php if($horas_pendientes == 0){ ?>
-    <p style="color: green; font-weight:bold;">
-        🎉 ¡Felicidades! Has completado tu servicio social
-    </p>
-<?php } ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -108,7 +114,13 @@ Horas Actuales
 
 <p><strong>Total horas:</strong> <?php echo $total_horas; ?></p>
 <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
-<p><strong>Faltantes:</strong> <?php echo max(0, $horas_requeridas - $total_horas); ?></p>
+<p><strong>Faltantes:</strong> <?php echo $horas_pendientes; ?></p>
+
+<?php if($horas_pendientes == 0 && $horas_requeridas > 0){ ?>
+    <p style="color: green; font-weight:bold;">
+        🎉 ¡Felicidades! Has completado tu servicio social
+    </p>
+<?php } ?>
 
 <br>
 
