@@ -1,68 +1,111 @@
+<?php
+session_start();
+include("conexion.php");
+
+if(!isset($_SESSION['usuario'])){
+    header("Location: index.php");
+    exit();
+}
+
+$usuario = $_SESSION['usuario'];
+
+/* GUARDAR HORAS REQUERIDAS */
+if(isset($_POST['guardar_config'])){
+    $horas_requeridas = $_POST['horas_requeridas'];
+
+    // Verificar si ya existe
+    $check = mysqli_query($conexion, "SELECT * FROM configuracion WHERE usuario='$usuario'");
+
+    if(mysqli_num_rows($check) > 0){
+        // actualizar
+        mysqli_query($conexion, "UPDATE configuracion SET horas_requeridas='$horas_requeridas' WHERE usuario='$usuario'");
+    }else{
+        // insertar
+        mysqli_query($conexion, "INSERT INTO configuracion (usuario, horas_requeridas) VALUES ('$usuario','$horas_requeridas')");
+    }
+}
+
+/* REGISTRAR HORAS */
+if(isset($_POST['registrar_horas'])){
+    $horas = $_POST['horas'];
+    $fecha = $_POST['fecha'];
+    $actividad = $_POST['actividad'];
+
+    mysqli_query($conexion, "INSERT INTO horas (usuario, horas, fecha, actividad)
+    VALUES ('$usuario','$horas','$fecha','$actividad')");
+}
+
+/* CONSULTAR TOTAL HORAS */
+$resultado = mysqli_query($conexion, "SELECT SUM(horas) as total FROM horas WHERE usuario='$usuario'");
+$fila = mysqli_fetch_assoc($resultado);
+$total_horas = $fila['total'] ?? 0;
+
+/* CONSULTAR HORAS REQUERIDAS */
+$config = mysqli_query($conexion, "SELECT horas_requeridas FROM configuracion WHERE usuario='$usuario'");
+$fila_config = mysqli_fetch_assoc($config);
+$horas_requeridas = $fila_config['horas_requeridas'] ?? 0;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Horas Actuales</title>
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<title>Horas Actuales</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
 <div class="login-container">
 
-    <div class="login-header">
-        Horas Actuales
-    </div>
+<div class="login-header">
+Horas Actuales
+</div>
 
-    <div class="login-body">
+<div class="login-body">
 
-        <!-- CONFIGURAR HORAS -->
-        <h3>Configurar horas del servicio social</h3>
+<h3>Configurar horas requeridas</h3>
 
-        <form method="POST">
-            <label>Horas requeridas:</label><br>
-            <input type="number" name="horas_requeridas" required><br><br>
+<form method="POST">
+<input type="number" name="horas_requeridas" placeholder="Ej: 120" required>
+<br><br>
+<button name="guardar_config" class="btn-verde">Guardar</button>
+</form>
 
-            <button type="submit" name="guardar_config" class="btn-verde">
-                Guardar configuración
-            </button>
-        </form>
+<hr>
 
-        <hr>
+<h3>Registrar actividad</h3>
 
-        <!-- REGISTRAR HORAS -->
-        <h3>Registrar horas de servicio social</h3>
+<form method="POST">
+<input type="number" name="horas" placeholder="Horas" required>
 
-        <form method="POST">
+<input type="date" name="fecha" required>
 
-            <label>Cantidad de horas:</label>
-            <input type="number" name="horas" min="1" required>
+<select name="actividad" required>
+<option value="">Seleccione</option>
+<option>Biblioteca</option>
+<option>CIE</option>
+<option>Laboratorio</option>
+<option>Eventos</option>
+</select>
 
-            <label>Fecha:</label>
-            <input type="date" name="fecha" required>
+<br><br>
+<button name="registrar_horas" class="btn-verde">Registrar</button>
+</form>
 
-            <label>Actividad:</label>
-            <select name="actividad" required>
-                <option value="">Seleccione</option>
-                <option>Entrega de Libros en Biblioteca</option>
-                <option>Migración de Cursos</option>
-            </select>
+<hr>
 
-            <br><br>
+<h3>Resumen</h3>
 
-            <button type="submit" name="registrar_horas" class="btn-volver">
-                Registrar horas
-            </button>
+<p><strong>Total horas:</strong> <?php echo $total_horas; ?></p>
+<p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
+<p><strong>Faltantes:</strong> <?php echo max(0, $horas_requeridas - $total_horas); ?></p>
 
-        </form>
+<br>
 
-        <br>
+<a href="dashboard.php" class="btn-volver">Volver</a>
 
-        <a href="dashboard.php" class="btn-volver">
-            Volver al menú
-        </a>
-
-    </div>
-
+</div>
 </div>
 
 </body>
