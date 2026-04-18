@@ -51,11 +51,16 @@ if(!isset($_SESSION['usuario'])){
             </a>
 
             <a href="pagos.php">
-                📄
+                🗂️
                 <h3>Opciones de Pago</h3>
                 <p>Conoce los programas disponibles</p>
             </a>
-
+           </a> 
+           href="pagos.php">
+                📗
+                <h3>Estado</h3>
+                <p>Aprobar o rechazar</p> 
+        </a>
         </div>
 
         <!-- BOTÓN CERRAR SESIÓN -->
