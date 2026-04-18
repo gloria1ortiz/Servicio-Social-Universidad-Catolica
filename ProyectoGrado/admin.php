@@ -52,7 +52,19 @@ $resultado = mysqli_query($conexion, $sql);
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
+ <td>
+                    <?php if($fila['estado'] == 'pendiente'){ ?>
+                        <a href="aprobar.php?id=<?php echo $fila['id']; ?>" class="btn-verde">
+                            ✅ Aprobar
+                        </a>
 
+                        <a href="rechazar.php?id=<?php echo $fila['id']; ?>" class="btn-rojo">
+                            ❌ Rechazar
+                        </a>
+                    <?php } else { ?>
+                        <span>No disponible</span>
+                    <?php } ?>
+                </td>
             <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
             <tr>
 
@@ -73,19 +85,7 @@ $resultado = mysqli_query($conexion, $sql);
                     ?>
                 </td>
 
-                <td>
-                    <?php if($fila['estado'] == 'pendiente'){ ?>
-                        <a href="aprobar.php?id=<?php echo $fila['id']; ?>" class="btn-verde">
-                            ✅ Aprobar
-                        </a>
-
-                        <a href="rechazar.php?id=<?php echo $fila['id']; ?>" class="btn-rojo">
-                            ❌ Rechazar
-                        </a>
-                    <?php } else { ?>
-                        <span>No disponible</span>
-                    <?php } ?>
-                </td>
+               
 
             </tr>
             <?php } ?>
