@@ -6,11 +6,6 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
-
-$horas_acumuladas = 60;
-$horas_requeridas = 120;
-$horas_pendientes = $horas_requeridas - $horas_acumuladas;
-$porcentaje = ($horas_acumuladas / $horas_requeridas) * 100;
 ?>
 <!DOCTYPE html>
 <html lang="es">
