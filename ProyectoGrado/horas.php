@@ -10,6 +10,11 @@ if(!isset($_SESSION['usuario'])){
 $usuario = $_SESSION['usuario'];
 
 /* GUARDAR HORAS REQUERIDAS */
+if($horas_actuales >= $horas_requeridas){
+    echo "<script>alert('Ya completaste tus horas 🎉');</script>";
+}else{
+    // guardar horas normalmente
+}
 if(isset($_POST['guardar_config'])){
     $horas_requeridas = $_POST['horas_requeridas'];
 
@@ -45,7 +50,11 @@ $config = mysqli_query($conexion, "SELECT horas_requeridas FROM configuracion WH
 $fila_config = mysqli_fetch_assoc($config);
 $horas_requeridas = $fila_config['horas_requeridas'] ?? 0;
 ?>
-
+<?php if($horas_pendientes == 0){ ?>
+    <p style="color: green; font-weight:bold;">
+        🎉 ¡Felicidades! Has completado tu servicio social
+    </p>
+<?php } ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
