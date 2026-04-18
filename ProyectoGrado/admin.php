@@ -22,7 +22,17 @@ $resultado = mysqli_query($conexion, $sql);
 </head>
 
 <body>
+<a href="aprobar.php?id=<?php echo $fila['id']; ?>" 
+   class="btn-verde"
+   onclick="return confirm('¿Seguro que deseas APROBAR estas horas?');">
+   ✅ Aprobar
+</a>
 
+<a href="rechazar.php?id=<?php echo $fila['id']; ?>" 
+   class="btn-rojo"
+   onclick="return confirm('¿Seguro que deseas RECHAZAR estas horas?');">
+   ❌ Rechazar
+</a>
 <div class="dashboard-container">
 
     <div class="dashboard-header">
