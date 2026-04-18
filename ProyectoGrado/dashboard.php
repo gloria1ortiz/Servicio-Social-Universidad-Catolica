@@ -55,12 +55,13 @@ if(!isset($_SESSION['usuario'])){
                 <h3>Opciones de Pago</h3>
                 <p>Conoce los programas disponibles</p>
             </a>
-           </a> 
-           href="pagos.php">
-                📗
-                <h3>Estado</h3>
-                <p>Aprobar o rechazar</p> 
-        </a>
+            
+          <a href="pagos.php">
+              📗
+              <h3>Estado de Validación</h3>
+        <p>Gestiona la aprobación de las horas registradas</p>
+    </div>
+</a>
         </div>
 
         <!-- BOTÓN CERRAR SESIÓN -->
