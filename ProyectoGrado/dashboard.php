@@ -56,9 +56,10 @@ if(!isset($_SESSION['usuario'])){
                 <p>Conoce los programas disponibles</p>
             </a>
             
-          <a href="pagos.php">
-              📗
-              <h3>Estado de Validación</h3>
+          <a href="admin.php" class="card-link">
+    <div class="card">
+        <div class="icon">📝</div>
+        <h3>Estado de Validación</h3>
         <p>Gestiona la aprobación de las horas registradas</p>
     </div>
 </a>
