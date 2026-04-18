@@ -3,9 +3,10 @@ session_start();
 include("conexion.php");
 
 /* VALIDAR QUE SEA ADMIN */
-if(!isset($_SESSION['usuario']) || $_SESSION['usuario'] != 'admin'){
+if(!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin'){
     echo "❌ Acceso denegado";
     exit();
+}
 }
 
 /* TRAER REGISTROS */
