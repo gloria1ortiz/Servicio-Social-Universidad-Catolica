@@ -119,7 +119,7 @@ Horas Actuales
 
 <?php if($horas_pendientes == 0 && $horas_requeridas > 0){ ?>
     <p style="color: green; font-weight:bold;">
-        🎉 ¡Felicidades! Has completado tu servicio social
+        ✅ ¡Felicidades! Has completado tu servicio social
     </p>
 <?php } ?>
 
