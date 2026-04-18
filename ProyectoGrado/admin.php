@@ -7,8 +7,6 @@ if(!isset($_SESSION['usuario'])){
     echo "❌ Acceso denegado";
     exit();
 }
-}
-}
 
 /* TRAER REGISTROS */
 $sql = "SELECT * FROM horas ORDER BY fecha DESC";
