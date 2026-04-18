@@ -26,11 +26,6 @@ if(!isset($_SESSION['usuario'])){
 
         <p>Actualmente existen las siguientes opciones:</p>
 
-        <ul>
-            <li>Pago total del servicio social</li>
-            <li>Pago parcial (50%)</li>
-            <li>Convenio institucional</li>
-        </ul>
 
             <!-- Módulos como botones verdes con descripción -->
         <div class="modulos-grid">
