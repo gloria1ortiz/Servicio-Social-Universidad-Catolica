@@ -21,9 +21,10 @@ if(isset($_POST['guardar_config'])){
         mysqli_query($conexion, "UPDATE configuracion 
                                 SET horas_requeridas='$horas_requeridas_post' 
                                 WHERE usuario='$usuario'");
-    }else{
-        mysqli_query($conexion, "INSERT INTO configuracion (usuario, horas_requeridas) 
-                                VALUES ('$usuario','$horas_requeridas_post')");
+    }
+    else{mysqli_query($conexion, "INSERT INTO horas (usuario, horas, fecha, actividad, estado)
+VALUES ('$usuario','$horas','$fecha','$actividad','pendiente')");
+        ;
     }
 }
 
