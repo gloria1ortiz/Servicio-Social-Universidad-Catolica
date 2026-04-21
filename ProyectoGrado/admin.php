@@ -22,17 +22,7 @@ $resultado = mysqli_query($conexion, $sql);
 </head>
 
 <body>
-<a href="aprobar.php?id=<?php echo $fila['id']; ?>" 
-   class="btn-verde"
-   onclick="return confirm('¿Seguro que deseas APROBAR estas horas?');">
-   ✅ Aprobar
-</a>
 
-<a href="rechazar.php?id=<?php echo $fila['id']; ?>" 
-   class="btn-rojo"
-   onclick="return confirm('¿Seguro que deseas RECHAZAR estas horas?');">
-   ❌ Rechazar
-</a>
 <div class="dashboard-container">
 
     <div class="dashboard-header">
@@ -52,19 +42,7 @@ $resultado = mysqli_query($conexion, $sql);
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
- <td>
-                    <?php if($fila['estado'] == 'pendiente'){ ?>
-                        <a href="aprobar.php?id=<?php echo $fila['id']; ?>" class="btn-verde">
-                            ✅ Aprobar
-                        </a>
 
-                        <a href="rechazar.php?id=<?php echo $fila['id']; ?>" class="btn-rojo">
-                            ❌ Rechazar
-                        </a>
-                    <?php } else { ?>
-                        <span>No disponible</span>
-                    <?php } ?>
-                </td>
             <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
             <tr>
 
@@ -75,9 +53,11 @@ $resultado = mysqli_query($conexion, $sql);
 
                 <td>
                     <?php 
-                        if($fila['estado'] == 'pendiente'){
+                        $estado = strtolower(trim($fila['estado'] ?? ''));
+
+                        if($estado == 'pendiente'){
                             echo "🟡 Pendiente";
-                        }elseif($fila['estado'] == 'aprobado'){
+                        }elseif($estado == 'aprobado'){
                             echo "🟢 Aprobado";
                         }else{
                             echo "🔴 Rechazado";
@@ -85,7 +65,25 @@ $resultado = mysqli_query($conexion, $sql);
                     ?>
                 </td>
 
-               
+                <td>
+                    <?php if($estado == 'pendiente'){ ?>
+                        
+                        <a href="aprobar.php?id=<?php echo $fila['id']; ?>" 
+                           class="btn-verde"
+                           onclick="return confirm('¿Seguro que deseas APROBAR estas horas?');">
+                           ✅ Aprobar
+                        </a>
+
+                        <a href="rechazar.php?id=<?php echo $fila['id']; ?>" 
+                           class="btn-rojo"
+                           onclick="return confirm('¿Seguro que deseas RECHAZAR estas horas?');">
+                           ❌ Rechazar
+                        </a>
+
+                    <?php } else { ?>
+                        <span>No disponible</span>
+                    <?php } ?>
+                </td>
 
             </tr>
             <?php } ?>
