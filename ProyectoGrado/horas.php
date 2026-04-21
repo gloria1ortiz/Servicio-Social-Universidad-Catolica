@@ -10,39 +10,47 @@ if(!isset($_SESSION['usuario'])){
 $usuario = $_SESSION['usuario'];
 
 
-   //GUARDAR HORAS REQUERIDAS
+// =========================
+// GUARDAR HORAS REQUERIDAS
+// =========================
 
 if(isset($_POST['guardar_config'])){
+
     $horas_requeridas_post = $_POST['horas_requeridas'];
 
     $check = mysqli_query($conexion, "SELECT * FROM configuracion WHERE usuario='$usuario'");
 
     if(mysqli_num_rows($check) > 0){
+        // ACTUALIZAR
         mysqli_query($conexion, "UPDATE configuracion 
                                 SET horas_requeridas='$horas_requeridas_post' 
                                 WHERE usuario='$usuario'");
-    }
-    else{mysqli_query($conexion, "INSERT INTO horas (usuario, horas, fecha, actividad, estado)
-VALUES ('$usuario','$horas','$fecha','$actividad','pendiente')");
-        ;
+    } else {
+        // INSERTAR (CORRECTO)
+        mysqli_query($conexion, "INSERT INTO configuracion (usuario, horas_requeridas)
+                                VALUES ('$usuario','$horas_requeridas_post')");
     }
 }
 
 
-   //REGISTRAR HORAS
+// =========================
+// REGISTRAR HORAS
+// =========================
 
 if(isset($_POST['registrar_horas'])){
+
     $horas = $_POST['horas'];
     $fecha = $_POST['fecha'];
     $actividad = $_POST['actividad'];
 
-    mysqli_query($conexion, "INSERT INTO horas (usuario, horas, fecha, actividad)
-    VALUES ('$usuario','$horas','$fecha','$actividad')");
+    mysqli_query($conexion, "INSERT INTO horas (usuario, horas, fecha, actividad, estado)
+    VALUES ('$usuario','$horas','$fecha','$actividad','pendiente')");
 }
 
 
-   //CONSULTAR DATOS
-
+// =========================
+// CONSULTAR DATOS
+// =========================
 
 // TOTAL HORAS
 $resultado = mysqli_query($conexion, "SELECT SUM(horas) as total 
