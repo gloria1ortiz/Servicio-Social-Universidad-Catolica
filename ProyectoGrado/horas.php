@@ -23,7 +23,7 @@ if(isset($_POST['guardar_config'])){
     if(mysqli_num_rows($check) > 0){
         // ACTUALIZAR
         mysqli_query($conexion, "UPDATE configuracion 
-                                SET horas_requeridas='$horas_requeridas_post' 
+                                SET horas_requeridas = '$horas' 
                                 WHERE usuario='$usuario'");
     } else {
         // INSERTAR (CORRECTO)
