@@ -55,13 +55,6 @@ $resultado = mysqli_query($conexion, "SELECT SUM(horas) as total
 $fila = mysqli_fetch_assoc($resultado);
 $total_horas = $fila['total'] ?? 0;
 
-// HORAS REQUERIDAS
-$config = mysqli_query($conexion, "SELECT horas_requeridas 
-                                  FROM configuracion 
-                                  WHERE usuario='$usuario'");
-$fila_config = mysqli_fetch_assoc($config);
-$horas_requeridas = $fila_config['horas_requeridas'] ?? 0;
-
 // CALCULAR PENDIENTES
 $horas_pendientes = max(0, $horas_requeridas - $total_horas);
 ?>
