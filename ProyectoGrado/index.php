@@ -36,11 +36,7 @@
         Si olvidó la contraseña, comuníquese con la oficina de Admisiones y Registro Académico
         </p>
 
-        <div class="links">
-            <a href="#" class="btn-grado">Grado por ventanilla / Grado privado</a>
         </div>
-
-    </div>
 
 </div>
 
