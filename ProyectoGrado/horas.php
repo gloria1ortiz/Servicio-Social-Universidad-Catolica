@@ -61,6 +61,7 @@ $total_horas = $fila['total'] ?? 0;
 
 // HORAS REQUERIDAS
 $config = mysqli_query($conexion, "SELECT horas_requeridas 
+
                                   FROM configuracion 
                                   WHERE usuario='$usuario'");
 $fila_config = mysqli_fetch_assoc($config);
