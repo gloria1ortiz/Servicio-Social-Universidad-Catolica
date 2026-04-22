@@ -2,6 +2,7 @@
 session_start();
 include("conexion.php");
 
+/* VALIDAR SESIÓN */
 if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
@@ -43,39 +44,49 @@ if($horas_requeridas > 0){
 
 <div class="login-container">
 
-<div class="login-header">
-Detalle de Servicio Social
-</div>
-
-<div class="login-body">
-
-<h3>Resumen</h3>
-
-<p><strong>Horas acumuladas:</strong> <?php echo $total_horas; ?></p>
-<p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
-<p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
-
-<!-- MENSAJE FINAL -->
-<?php if($horas_pendientes == 0 && $horas_requeridas > 0){ ?>
-    <p style="color: green; font-weight:bold;">
-        ✅ ¡Servicio social completado!
-    </p>
-<?php } ?>
-
-<br>
-
-<!-- BARRA DE PROGRESO -->
-<div class="progress-container">
-    <div class="progress-bar" style="width: <?php echo $porcentaje; ?>%;">
-        <?php echo round($porcentaje); ?>%
+    <div class="login-header">
+        Detalle de Servicio Social
     </div>
-</div>
 
-<br>
+    <div class="login-body">
 
-<a href="dashboard.php" class="btn-volver">Volver al menú</a>
+        <h3>Resumen</h3>
 
-</div>
+        <p><strong>Horas acumuladas:</strong> <?php echo $total_horas; ?></p>
+        <p><strong>Horas requeridas:</strong> <?php echo $horas_requeridas; ?></p>
+        <p><strong>Horas pendientes:</strong> <?php echo $horas_pendientes; ?></p>
+
+        <!-- MENSAJE FINAL -->
+        <?php if($horas_pendientes == 0 && $horas_requeridas > 0){ ?>
+            <p style="color: green; font-weight:bold;">
+                ✅ ¡Servicio social completado!
+            </p>
+        <?php } ?>
+
+        <br>
+
+        <!-- BARRA DE PROGRESO -->
+        <div class="progress-container">
+            <div class="progress-bar" style="width: <?php echo $porcentaje; ?>%;">
+                <?php echo round($porcentaje); ?>%
+            </div>
+        </div>
+
+        <br>
+
+        <!-- BOTÓN PDF (AQUÍ VA CORRECTAMENTE) -->
+        <a href="reporte.php" class="btn-verde">
+            📄 Descargar Reporte PDF
+        </a>
+
+        <br><br>
+
+        <a href="dashboard.php" class="btn-volver">
+            ⬅ Volver al menú
+        </a>
+
+    </div>
+
 </div>
 
 </body>
