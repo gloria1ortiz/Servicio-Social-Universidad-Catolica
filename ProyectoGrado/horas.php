@@ -11,8 +11,8 @@ if(!isset($_SESSION['usuario'])){
 $usuario = $_SESSION['usuario'];
 
 /* =========================
-   GUARDAR HORAS REQUERIDAS  
-
+   GUARDAR HORAS REQUERIDAS
+========================= 
 if(isset($_POST['guardar_config'])){
 
     $horas_requeridas_post = $_POST['horas_requeridas'];
@@ -20,7 +20,7 @@ if(isset($_POST['guardar_config'])){
     $check = mysqli_query($conexion, "SELECT * FROM configuracion WHERE usuario='$usuario'");
 
     if(mysqli_num_rows($check) > 0){
-        // ACTUALIZAR 
+        // ACTUALIZAR (CORREGIDO)
         mysqli_query($conexion, "UPDATE configuracion 
                                 SET horas_requeridas = '$horas_requeridas_post' 
                                 WHERE usuario='$usuario'");
@@ -32,7 +32,7 @@ if(isset($_POST['guardar_config'])){
 }
 
 /* =========================
-   REGISTRAR HORAS 
+   REGISTRAR HORAS
 ========================= */
 if(isset($_POST['registrar_horas'])){
 
@@ -55,18 +55,6 @@ $resultado = mysqli_query($conexion, "SELECT SUM(horas) as total
 $fila = mysqli_fetch_assoc($resultado);
 $total_horas = $fila['total'] ?? 0;
 
-
-//SE CONTABILIZAN LAS HORAS/
-
-if(isset($_POST['guardar_config'])){
-
-    $horas_requeridas_post = $_POST['horas_requeridas'];
-
-    $check = mysqli_query($conexion, "SELECT * FROM configuracion WHERE usuario='$usuario'");
-
-    if(mysqli_num_rows($check) > 0){
-
-        
 // CALCULAR PENDIENTES
 $horas_pendientes = max(0, $horas_requeridas - $total_horas);
 ?>
