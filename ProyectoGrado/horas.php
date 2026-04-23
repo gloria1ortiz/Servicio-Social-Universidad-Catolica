@@ -12,7 +12,7 @@ $usuario = $_SESSION['usuario'];
 
 /* =========================
    GUARDAR HORAS REQUERIDAS
-========================= 
+========================= */
 if(isset($_POST['guardar_config'])){
 
     $horas_requeridas_post = $_POST['horas_requeridas'];
