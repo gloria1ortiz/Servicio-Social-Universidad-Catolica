@@ -10,7 +10,7 @@
 <div class="login-container">
     <div class="login-header">Portal Estudiantil</div>
     <div class="login-body">
-       <form method="POST" action="login.php">
+       <form method="POST" action="ProyectoGrado/login.php">
     
     <input type="text" name="identificacion" placeholder="Identificación" required>
     
