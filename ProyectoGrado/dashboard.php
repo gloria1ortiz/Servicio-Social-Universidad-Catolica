@@ -1,19 +1,16 @@
 <?php
 require_once 'classes/Auth.php';
-
 session_start();
 
-// Inicializar autenticación
 $auth = new Auth();
 
-// Validar sesión
 if (!$auth->isLoggedIn()) {
     header("Location: index.php");
     exit();
 }
 
-// Obtener usuario actual
-$usuario = $auth—>
+$usuario = htmlspecialchars($_SESSION['usuario']);
+?>
 
 <!DOCTYPE html>
 <html lang="es">
