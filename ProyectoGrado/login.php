@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($resultado) > 0){
         $_SESSION['usuario'] = $usuario;
-        header("Location: ProyectoGrado/dashboard.php");
+        header("Location: dashboard.php");
         exit();
     } else {
         echo "<script>alert('Datos incorrectos');</script>";
