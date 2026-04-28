@@ -1,10 +1,16 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+session_start();
+
+// Validar sesión
 if(!isset($_SESSION['usuario'])){
     header("Location: ../index.php");
     exit();
 }
+
+$usuario = $_SESSION['usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +33,7 @@ if(!isset($_SESSION['usuario'])){
     <!-- CONTENIDO -->
     <div class="dashboard-body">
 
-        <h2>Bienvenid@ <?php echo $_SESSION['usuario']; ?></h2>
+        <h2>Bienvenid@ <?php echo $usuario; ?></h2>
 
         <p>
             Bienvenido al registro de horas de servicio social de la UCP.
@@ -55,13 +61,12 @@ if(!isset($_SESSION['usuario'])){
                 <p>Conoce los programas disponibles</p>
             </a>
             
-          <a href="admin.php" class="card-link">
-    <div class="card">
-        <div class="icon">📝</div>
-        <h3>Estado de Validación</h3>
-        <p>Gestiona la aprobación de las horas registradas</p>
-    </div>
-</a>
+            <a href="admin.php">
+                📝
+                <h3>Estado de Validación</h3>
+                <p>Gestiona la aprobación de las horas registradas</p>
+            </a>
+
         </div>
 
         <!-- BOTÓN CERRAR SESIÓN -->
@@ -73,14 +78,5 @@ if(!isset($_SESSION['usuario'])){
 
 </div>
 
-
 </body>
 </html>
-
-
-
-
-
-
-
-
