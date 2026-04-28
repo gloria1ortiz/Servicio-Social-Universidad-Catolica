@@ -1,12 +1,19 @@
 <?php
+require_once 'classes/Auth.php';
+
 session_start();
 
+// Inicializar autenticación
+$auth = new Auth();
+
 // Validar sesión
-if(!isset($_SESSION['usuario'])){
+if (!$auth->isLoggedIn()) {
     header("Location: index.php");
     exit();
 }
-?>
+
+// Obtener usuario actual
+$usuario = $auth—>
 
 <!DOCTYPE html>
 <html lang="es">
