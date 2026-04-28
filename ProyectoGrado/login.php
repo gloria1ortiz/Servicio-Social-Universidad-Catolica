@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
-include("conexion.php");
+include("../conexion.php"); // 👈 importante (sube una carpeta)
 
 if(isset($_POST['login'])){
     
@@ -18,11 +18,4 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($resultado) > 0){
         $_SESSION['usuario'] = $usuario;
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        echo "LOGIN CORRECTO";
-exit();
-    }
-}
-?>
+        header("Location
