@@ -1,15 +1,10 @@
 <?php
-require_once 'classes/Auth.php';
 session_start();
 
-$auth = new Auth();
-
-if (!$auth->isLoggedIn()) {
-    header("Location: index.php");
+if(!isset($_SESSION['usuario'])){
+    header("Location: ../index.php");
     exit();
 }
-
-$usuario = htmlspecialchars($_SESSION['usuario']);
 ?>
 
 <!DOCTYPE html>
