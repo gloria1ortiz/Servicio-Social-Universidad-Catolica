@@ -9,7 +9,7 @@ if(!isset($_SESSION['usuario'])){
 }
 
 /* IMPORTAR FPDF */
-require('fpdf/fpdf.php'); // 🔥 IMPORTANTE (carpeta fpdf)
+require(__DIR__ . '/../fpdf.php'); // IMPORTANTE (carpeta fpdf.php)
 
 /* USUARIO */
 $usuario = $_SESSION['usuario'];
