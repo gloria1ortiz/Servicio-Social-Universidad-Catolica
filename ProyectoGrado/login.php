@@ -1,26 +1,24 @@
 <?php
 session_start();
+include("conexion.php");
 
-$usuario = $_POST['identificacion'] ?? '';
-$contrasena = $_POST['contrasena'] ?? '';
+if(isset($_POST['login'])){
+    
+    $usuario = $_POST['identificacion'];
+    $password = $_POST['password'];
 
-// Usuario genérico
-$usuario_valido = "estudiante";
-$contrasena_valida = "12345";
+    $sql = "SELECT * FROM usuarios 
+            WHERE identificacion='$usuario' 
+            AND password='$password'";
 
-if($usuario === $usuario_valido && $contrasena === $contrasena_valida){
+    $resultado = mysqli_query($conexion, $sql);
 
-   $_SESSION['usuario'] = $usuario;
-   $_SESSION['rol'] = 'admin'; // o 'estudiante'
-
-    header("Location: dashboard.php");
-    exit();
-
-} else {
-
-    echo "Credenciales incorrectas. <a href='index.php'>Volver</a>";
-
+    if(mysqli_num_rows($resultado) > 0){
+        $_SESSION['usuario'] = $usuario;
+        header("Location: ProyectoGrado/dashboard.php");
+        exit();
+    } else {
+        echo "<script>alert('Datos incorrectos');</script>";
+    }
 }
 ?>
-
-
