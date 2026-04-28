@@ -21,7 +21,8 @@ if(isset($_POST['login'])){
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "<script>alert('Datos incorrectos');</script>";
+        echo "LOGIN CORRECTO";
+exit();
     }
 }
 ?>
