@@ -1,25 +1,34 @@
 <?php
 session_start();
+include("conexion.php");
 
-if(isset($_GET['archivo'])){
+if(isset($_GET['id'])){
 
-    $archivo = $_GET['archivo'];
+    $id = $_GET['id'];
+    $tipo = $_GET['tipo'];
 
-    // BORRAR DEL ARRAY
-    foreach($_SESSION['evidencias'] as $key => $e){
-        if($e['archivo'] == $archivo){
-            unset($_SESSION['evidencias'][$key]);
+    // BUSCAR ARCHIVO
+    $sql = "SELECT archivo FROM evidencias WHERE id='$id'";
+    $res = mysqli_query($conexion, $sql);
+    $fila = mysqli_fetch_assoc($res);
+
+    if($fila){
+        $archivo = $fila['archivo'];
+
+        // BORRAR ARCHIVO FÍSICO
+        $ruta = "uploads/" . $archivo;
+        if(file_exists($ruta)){
+            unlink($ruta);
         }
-    }
 
-    // BORRAR ARCHIVO FÍSICO
-    $ruta = "uploads/" . $archivo;
-    if(file_exists($ruta)){
-        unlink($ruta);
+        // BORRAR DE LA BD
+        mysqli_query($conexion, "DELETE FROM evidencias WHERE id='$id'");
     }
 
     $_SESSION['mensaje'] = "🗑 Archivo eliminado correctamente";
-}
 
-header("Location: cie.php");
-exit();
+    // REDIRIGIR SEGÚN MÓDULO
+    header("Location: " . $tipo . ".php");
+    exit();
+}
+?>
