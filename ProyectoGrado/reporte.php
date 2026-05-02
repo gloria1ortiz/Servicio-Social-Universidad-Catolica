@@ -15,7 +15,7 @@ if(!isset($_SESSION['usuario'])){
 $usuario = $_SESSION['usuario'];
 
 /* IMPORTAR FPDF */
-require('../fpdf/fpdf.php');
+require('../fpdf.php');
 
 /* CONSULTAR HORAS APROBADAS */
 $sql = "SELECT * FROM horas 
