@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 include("conexion.php");
 
@@ -8,23 +11,11 @@ if(!isset($_SESSION['usuario'])){
     exit();
 }
 
-/* IMPORTAR FPDF */
-<?php
-require('../fpdf/fpdf.php');
-
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-
-$pdf->Cell(0,10,'Reporte de Servicio Social',0,1);
-$pdf->Cell(0,10,'Horas acumuladas: 202',0,1);
-$pdf->Cell(0,10,'Horas requeridas: 210',0,1);
-$pdf->Cell(0,10,'Horas pendientes: 8',0,1);
-
-$pdf->Output();
-?>
 /* USUARIO */
 $usuario = $_SESSION['usuario'];
+
+/* IMPORTAR FPDF */
+require('../fpdf/fpdf.php');
 
 /* CONSULTAR HORAS APROBADAS */
 $sql = "SELECT * FROM horas 
@@ -81,6 +72,6 @@ $pdf->Cell(0,10,'Total de horas aprobadas: '.$total,0,1);
 /* FECHA */
 $pdf->Cell(0,10,'Fecha: '.date('d/m/Y'),0,1);
 
-/* DESCARGAR */
+/* DESCARGAR PDF */
 $pdf->Output('D','Reporte_Horas.pdf');
 ?>
