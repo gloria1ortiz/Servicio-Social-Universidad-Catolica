@@ -31,14 +31,14 @@ session_start();
         <p><strong>Adjuntar evidencia:</strong></p>
 
         <!-- MENSAJE -->
-        <?php if (isset($_SESSION['mensaje'])): ?>
-            <div style="padding: 10px; background: #f0f0f0; margin-bottom: 15px;">
+       <?php if (isset($_SESSION['mensaje'])): ?>
+            <div style="padding: 10px; background: #e6ffe6; margin-bottom: 15px;">
                 <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
             </div>
         <?php endif; ?>
 
         <!-- FORMULARIO -->
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+         <form method="POST" enctype="multipart/form-data">
 
             <p><strong>Selecciona la actividad:</strong></p>
 
@@ -50,11 +50,9 @@ session_start();
             </select>
 
             <br><br>
-
-            <label class="btn-verde">
-                Seleccionar archivos
+            
                 <input type="file" name="archivo[]" multiple hidden required>
-            </label>
+           
 
             <br><br>
 
@@ -66,38 +64,29 @@ session_start();
 
         <br>
 
-        <!-- MOSTRAR -->
-        <?php if(isset($_SESSION['evidencias'])){ ?>
+     <!-- MOSTRAR EVIDENCIAS DESDE BD -->
+        <h3>📄 Evidencias registradas</h3>
 
-            <h3>📄 Evidencias registradas</h3>
+        <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
 
-            <?php foreach($_SESSION['evidencias'] as $e){ ?>
+            <div style="margin-bottom:15px;">
 
-                <?php if(
-                    $e['modulo'] == "Apoyo logístico" ||
-                    $e['modulo'] == "Organización de eventos" ||
-                    $e['modulo'] == "Atención a participantes"
-                ){ ?>
+                <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
 
-                    <div style="margin-bottom:15px;">
+                <!-- VER -->
+                <a href="uploads/<?php echo $row['archivo']; ?>" target="_blank" class="btn-verde">
+                    📄 Ver
+                </a>
 
-                        <strong>Actividad:</strong> <?php echo $e['modulo']; ?><br><br>
-
-                        <a href="uploads/<?php echo $e['archivo']; ?>" target="_blank" class="btn-verde">
-                            📄 Ver
-                        </a>
-
-                        <a href="eliminar.php?archivo=<?php echo $e['archivo']; ?>" class="btn-verde">
-                            🗑 Eliminar
+                <!-- ELIMINAR -->
+                <a href="eliminar.php?id=<?php echo $row['id']; ?>" class="btn-rojo">
+                    🗑 Eliminar
                         </a>
 
                     </div>
 
                 <?php } ?>
 
-            <?php } ?>
-
-        <?php } ?>
 
         <br>
 
