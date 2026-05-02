@@ -29,7 +29,7 @@ if(isset($_POST['guardar'])){
 
 /* OBTENER EVIDENCIAS */
 $usuario = $_SESSION['usuario'];
-$resultado = mysqli_query($conexion, "SELECT * FROM evidencias WHERE usuario='$usuario' AND tipo='biblioteca'";
+$resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuario='$usuario' AND tipo='biblioteca'";
 ?>
 
 <!DOCTYPE html>
