@@ -6,7 +6,7 @@ session_start();
 
 // Validar sesión
 if(!isset($_SESSION['usuario'])){
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit();
 }
 
