@@ -1,5 +1,35 @@
 <?php
 session_start();
+include("conexion.php");
+
+/* GUARDAR EVIDENCIA */
+if(isset($_POST['guardar'])){
+
+    $usuario = $_SESSION['usuario'];
+    $actividad = $_POST['actividad'];
+
+    // recorrer múltiples archivos
+    foreach($_FILES['archivo']['name'] as $key => $nombreArchivo){
+
+        $tmp = $_FILES['archivo']['tmp_name'][$key];
+        $ruta = "uploads/" . $nombreArchivo;
+
+        if(move_uploaded_file($tmp, $ruta)){
+
+            $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
+                    VALUES ('$usuario', '$actividad', '$nombreArchivo')";
+            mysqli_query($conexion, $sql);
+        }
+    }
+
+    $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
+    header("Location: cie.php");
+    exit();
+}
+
+/* OBTENER EVIDENCIAS */
+$usuario = $_SESSION['usuario'];
+$resultado = mysqli_query($conexion, "SELECT * FROM evidencias WHERE usuario='$usuario' AND tipo='laboratorio'";
 ?>
 
 <!DOCTYPE html>
