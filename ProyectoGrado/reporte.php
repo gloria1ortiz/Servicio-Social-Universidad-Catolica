@@ -15,7 +15,11 @@ require('../fpdf/fpdf.php');
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
-$pdf->Cell(40,10,'Hola, PDF funcionando');
+
+$pdf->Cell(0,10,'Reporte de Servicio Social',0,1);
+$pdf->Cell(0,10,'Horas acumuladas: 202',0,1);
+$pdf->Cell(0,10,'Horas requeridas: 210',0,1);
+$pdf->Cell(0,10,'Horas pendientes: 8',0,1);
 
 $pdf->Output();
 ?>
