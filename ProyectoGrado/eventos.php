@@ -16,7 +16,7 @@ if(isset($_POST['guardar'])){
 
         if(move_uploaded_file($tmp, $ruta)){
 
-            $sql = "INSERT INTO evidencias (usuario, actividad, archivo) 
+            $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
                     VALUES ('$usuario', '$actividad', '$nombreArchivo')";
             mysqli_query($conexion, $sql);
         }
@@ -29,7 +29,7 @@ if(isset($_POST['guardar'])){
 
 /* OBTENER EVIDENCIAS */
 $usuario = $_SESSION['usuario'];
-$resultado = mysqli_query($conexion, "SELECT * FROM evidencias WHERE usuario='$usuario' ORDER BY id DESC");
+$resultado = mysqli_query($conexion, "SELECT * FROM evidencias   WHERE usuario='$usuario' AND tipo='eventos'";
 ?>
 
 <!DOCTYPE html>
