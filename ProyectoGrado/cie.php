@@ -7,8 +7,8 @@ if(isset($_POST['guardar'])){
 
     $usuario = $_SESSION['usuario'];
     $actividad = $_POST['actividad'];
+    $tipo = "cie";
 
-    // recorrer múltiples archivos
     foreach($_FILES['archivo']['name'] as $key => $nombreArchivo){
 
         $tmp = $_FILES['archivo']['tmp_name'][$key];
@@ -17,7 +17,7 @@ if(isset($_POST['guardar'])){
         if(move_uploaded_file($tmp, $ruta)){
 
             $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
-                    VALUES ('$usuario', '$actividad', '$nombreArchivo')";
+                    VALUES ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
             mysqli_query($conexion, $sql);
         }
     }
@@ -29,7 +29,11 @@ if(isset($_POST['guardar'])){
 
 /* OBTENER EVIDENCIAS */
 $usuario = $_SESSION['usuario'];
-$resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias  WHERE usuario='$usuario' AND tipo='cie');
+
+$sql = "SELECT * FROM evidencias 
+        WHERE usuario='$usuario' AND tipo='cie'";
+
+$resultado = mysqli_query($conexion, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +97,6 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias  WHERE usua
 
         <br>
 
-        <!-- MOSTRAR EVIDENCIAS DESDE BD -->
         <h3>📄 Evidencias registradas</h3>
 
         <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
@@ -102,13 +105,11 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias  WHERE usua
 
                 <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
 
-                <!-- VER -->
                 <a href="uploads/<?php echo $row['archivo']; ?>" target="_blank" class="btn-verde">
                     📄 Ver
                 </a>
 
-                <!-- ELIMINAR -->
-                <a href="eliminar.php?id=<?php echo $row['id']; ?>" class="btn-rojo">
+                <a href="eliminar.php?id=<?php echo $row['id']; ?>&tipo=cie" class="btn-rojo">
                     🗑 Eliminar
                 </a>
 
@@ -118,7 +119,7 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias  WHERE usua
 
         <br>
 
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        <a href="pagos.php" class="btn-volver">⬅ Volver</a>
 
     </div>
 
