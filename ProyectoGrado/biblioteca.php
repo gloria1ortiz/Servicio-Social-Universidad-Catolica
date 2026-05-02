@@ -29,9 +29,15 @@ if(isset($_POST['guardar'])){
 
 /* OBTENER EVIDENCIAS */
 $usuario = $_SESSION['usuario'];
-$resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuario='$usuario' AND tipo='biblioteca'";
-?>
 
+$sql = "SELECT * FROM evidencias 
+        WHERE usuario='$usuario' AND tipo='biblioteca'";
+
+$resultado = mysqli_query($conexion, $sql);
+
+while($fila = mysqli_fetch_assoc($resultado)){
+    echo $fila['actividad'];
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
