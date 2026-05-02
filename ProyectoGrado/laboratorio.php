@@ -7,8 +7,8 @@ if(isset($_POST['guardar'])){
 
     $usuario = $_SESSION['usuario'];
     $actividad = $_POST['actividad'];
+    $tipo = "laboratorio";
 
-    // recorrer múltiples archivos
     foreach($_FILES['archivo']['name'] as $key => $nombreArchivo){
 
         $tmp = $_FILES['archivo']['tmp_name'][$key];
@@ -17,19 +17,23 @@ if(isset($_POST['guardar'])){
         if(move_uploaded_file($tmp, $ruta)){
 
             $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
-                    VALUES ('$usuario', '$actividad', '$nombreArchivo')";
+                    VALUES ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
             mysqli_query($conexion, $sql);
         }
     }
 
     $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
-    header("Location: cie.php");
+    header("Location: laboratorio.php");
     exit();
 }
 
 /* OBTENER EVIDENCIAS */
 $usuario = $_SESSION['usuario'];
-$resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuario='$usuario' AND tipo='laboratorio'";
+
+$sql = "SELECT * FROM evidencias 
+        WHERE usuario='$usuario' AND tipo='laboratorio'";
+
+$resultado = mysqli_query($conexion, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -68,11 +72,11 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuar
         <?php endif; ?>
 
         <!-- FORMULARIO -->
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
 
             <p><strong>Selecciona la actividad:</strong></p>
 
-            <select name="modulo" required>
+            <select name="actividad" required>
                 <option value="">-- Seleccionar --</option>
                 <option value="Inventario de equipos">Inventario de equipos</option>
                 <option value="Mantenimiento básico">Mantenimiento básico</option>
@@ -81,14 +85,11 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuar
 
             <br><br>
 
-            <label class="btn-verde">
-                Seleccionar archivos
-                <input type="file" name="archivo[]" multiple hidden required>
-            </label>
+            <input type="file" name="archivo[]" multiple required>
 
             <br><br>
 
-            <button type="submit" class="btn-verde">
+            <button type="submit" name="guardar">
                 Guardar evidencia
             </button>
 
@@ -96,42 +97,29 @@ $resultado = mysqli_query($conexion,$sql); "SELECT * FROM evidencias WHERE usuar
 
         <br>
 
-        <!-- MOSTRAR -->
-        <?php if(isset($_SESSION['evidencias'])){ ?>
+        <h3>📄 Evidencias registradas</h3>
 
-            <h3>📄 Evidencias registradas</h3>
+        <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
 
-            <?php foreach($_SESSION['evidencias'] as $e){ ?>
+            <div style="margin-bottom:15px;">
 
-                <?php if(
-                    $e['modulo'] == "Inventario de equipos" ||
-                    $e['modulo'] == "Mantenimiento básico" ||
-                    $e['modulo'] == "Cuidado de herramientas"
-                ){ ?>
+                <strong>Actividad:</strong> <?php echo $fila['actividad']; ?><br><br>
 
-                    <div style="margin-bottom:15px;">
+                <a href="uploads/<?php echo $fila['archivo']; ?>" target="_blank">
+                    📄 Ver
+                </a>
 
-                        <strong>Actividad:</strong> <?php echo $e['modulo']; ?><br><br>
+                <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=laboratorio">
+                    🗑 Eliminar
+                </a>
 
-                        <a href="uploads/<?php echo $e['archivo']; ?>" target="_blank" class="btn-verde">
-                            📄 Ver
-                        </a>
-
-                        <a href="eliminar.php?archivo=<?php echo $e['archivo']; ?>" class="btn-verde">
-                            🗑 Eliminar
-                        </a>
-
-                    </div>
-
-                <?php } ?>
-
-            <?php } ?>
+            </div>
 
         <?php } ?>
 
         <br>
 
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        <a href="pagos.php">⬅ Volver</a>
 
     </div>
 
