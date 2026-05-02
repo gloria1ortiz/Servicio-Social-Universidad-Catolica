@@ -9,8 +9,16 @@ if(!isset($_SESSION['usuario'])){
 }
 
 /* IMPORTAR FPDF */
-require(__DIR__ . '/../fpdf.php'); // IMPORTANTE (carpeta fpdf.php)
+<?php
+require('../fpdf/fpdf.php');
 
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
+$pdf->Cell(40,10,'Hola, PDF funcionando');
+
+$pdf->Output();
+?>
 /* USUARIO */
 $usuario = $_SESSION['usuario'];
 
