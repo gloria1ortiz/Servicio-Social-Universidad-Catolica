@@ -6,9 +6,9 @@ include("conexion.php");
 if(isset($_POST['guardar'])){
 
     $usuario = $_SESSION['usuario'];
-    $actividad = $_POST['actividad'];
+    $actividad = $_POST['modulo'];
+    $tipo = "biblioteca";
 
-    // recorrer múltiples archivos
     foreach($_FILES['archivo']['name'] as $key => $nombreArchivo){
 
         $tmp = $_FILES['archivo']['tmp_name'][$key];
@@ -17,13 +17,13 @@ if(isset($_POST['guardar'])){
         if(move_uploaded_file($tmp, $ruta)){
 
             $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
-                    VALUES ('$usuario', '$actividad', '$nombreArchivo')";
+                    VALUES ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
             mysqli_query($conexion, $sql);
         }
     }
 
     $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
-    header("Location: cie.php");
+    header("Location: biblioteca.php");
     exit();
 }
 
@@ -34,10 +34,8 @@ $sql = "SELECT * FROM evidencias
         WHERE usuario='$usuario' AND tipo='biblioteca'";
 
 $resultado = mysqli_query($conexion, $sql);
+?>
 
-while($fila = mysqli_fetch_assoc($resultado)){
-    echo $fila['actividad'];
-}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -74,7 +72,7 @@ while($fila = mysqli_fetch_assoc($resultado)){
         <?php endif; ?>
 
         <!-- FORMULARIO -->
-        <form action="subir_archivo.php" method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data">
 
             <p><strong>Selecciona la actividad:</strong></p>
 
@@ -87,14 +85,11 @@ while($fila = mysqli_fetch_assoc($resultado)){
 
             <br><br>
 
-            <label class="btn-verde">
-                Seleccionar archivos
-                <input type="file" name="archivo[]" multiple hidden required>
-            </label>
+            <input type="file" name="archivo[]" multiple required>
 
             <br><br>
 
-            <button type="submit" class="btn-verde">
+            <button type="submit" name="guardar">
                 Guardar evidencia
             </button>
 
@@ -102,45 +97,29 @@ while($fila = mysqli_fetch_assoc($resultado)){
 
         <br>
 
-        <!-- MOSTRAR EVIDENCIAS -->
-        <?php if(isset($_SESSION['evidencias'])){ ?>
+        <h3>📄 Evidencias registradas</h3>
 
-            <h3>📄 Evidencias registradas</h3>
+        <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
 
-            <?php foreach($_SESSION['evidencias'] as $e){ ?>
+            <div style="margin-bottom:15px;">
 
-                <?php if(
-                    $e['modulo'] == "Entrega de libros" ||
-                    $e['modulo'] == "Organización de estanterías" ||
-                    $e['modulo'] == "Cuidado de la biblioteca"
-                ){ ?>
+                <strong>Actividad:</strong> <?php echo $fila['actividad']; ?><br><br>
 
-                    <div style="margin-bottom:15px;">
+                <a href="uploads/<?php echo $fila['archivo']; ?>" target="_blank">
+                    📄 Ver
+                </a>
 
-                        <strong>Actividad:</strong> <?php echo $e['modulo']; ?><br><br>
+                <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=biblioteca">
+                    🗑 Eliminar
+                </a>
 
-                        <!-- VER -->
-                        <a href="uploads/<?php echo $e['archivo']; ?>" target="_blank" class="btn-verde">
-                            📄 Ver
-                        </a>
-
-                        <!-- ELIMINAR -->
-                        <a href="eliminar.php?archivo=<?php echo $e['archivo']; ?>" class="btn-verde">
-                            🗑 Eliminar
-                        </a>
-
-                    </div>
-
-                <?php } ?>
-
-            <?php } ?>
+            </div>
 
         <?php } ?>
 
         <br>
 
-        <!-- VOLVER -->
-        <a href="pagos.php" class="btn-volver">⬅ Volver a disponibilidades</a>
+        <a href="pagos.php">⬅ Volver</a>
 
     </div>
 
