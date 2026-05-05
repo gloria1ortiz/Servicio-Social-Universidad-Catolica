@@ -98,8 +98,16 @@ body {
     transition: 0.3s;
 }
 
-.btn-verde:hover {
-    background-color: #218838;
+.btn-verde {
+    display: inline-block;
+    background-color: #28a745;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 /* BOTÓN VOLVER */
@@ -228,7 +236,6 @@ body {
     padding: 15px;
 }
 
-/* ===== RESPONSIVE ===== */
 
 @media (max-width: 600px) {
     .dashboard-container {
