@@ -3,7 +3,6 @@ session_start();
 
 if(isset($_POST['entrar'])){
     $_SESSION['usuario'] = "Gloria";
-    include("conexion.php");
     header("Location: dashboard.php");
     exit();
 }
@@ -13,7 +12,7 @@ if(isset($_POST['entrar'])){
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Portal Estudiantil</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -26,7 +25,6 @@ if(isset($_POST['entrar'])){
 
     <form method="POST">
 
-        <!-- BOTÓN -->
         <button type="submit" name="entrar" class="btn-login">
             ENTRAR
         </button>
