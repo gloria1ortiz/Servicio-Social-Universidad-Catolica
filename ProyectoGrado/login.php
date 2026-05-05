@@ -12,28 +12,28 @@ if(isset($_POST['entrar'])){
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-
-<style>
-.btn-verde{
-    background:#1f7a3f;
-    color:white;
-    border:none;
-    padding:12px;
-    border-radius:8px;
-    cursor:pointer;
-}
-</style>
-
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<form method="POST">
-    <button type="submit" name="entrar" class="btn-verde">
-        ENTRAR
-    </button>
-</form>
+<div class="login-container">
+
+    <div class="login-header">
+        Portal Estudiantil
+    </div>
+
+    <form method="POST">
+
+        <!-- BOTÓN -->
+        <button type="submit" name="entrar" class="btn-login">
+            ENTRAR
+        </button>
+
+    </form>
+
+</div>
 
 </body>
 </html>
