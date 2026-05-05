@@ -7,7 +7,7 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
 
     // VALIDACIÓN SIMPLE (puedes mejorar luego con BD)
-    if($usuario == "estudiante" && $password == "1234"){
+    if($usuario == "estudiante" && $password == "12345"){
         $_SESSION['usuario'] = $usuario;
         header("Location: dashboard.php");
         exit();
