@@ -2,11 +2,15 @@
 session_start();
 include("conexion.php");
 
-if(isset($_POST['login'])){
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+// Solo se ejecuta cuando se envía el formulario
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    if($usuario == "estudiante" && $password == "12345"){
+    // Validar que existan los campos
+    $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
+
+    // Validación simple (prueba)
+    if($usuario === "estudiante" && $password === "12345"){
         $_SESSION['usuario'] = $usuario;
         header("Location: dashboard.php");
         exit();
@@ -31,7 +35,7 @@ if(isset($_POST['login'])){
         Portal Estudiantil
     </div>
 
-    <form method="POST">
+    <form method="POST" action="">
 
         <div class="input-group">
             <input type="text" name="usuario" placeholder="Usuario" required>
@@ -41,16 +45,15 @@ if(isset($_POST['login'])){
             <input type="password" name="password" placeholder="Contraseña" required>
         </div>
 
-        <!-- BOTÓN -->
-        <button type="submit" name="login" class="btn-login">
+        <button type="submit" class="btn-login">
             ENTRAR
         </button>
 
     </form>
 
-    <?php if(isset($error)){ ?>
+    <?php if(isset($error)): ?>
         <p style="color:red;"><?php echo $error; ?></p>
-    <?php } ?>
+    <?php endif; ?>
 
 </div>
 
