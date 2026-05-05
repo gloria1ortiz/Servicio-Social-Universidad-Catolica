@@ -6,7 +6,6 @@ if(isset($_POST['login'])){
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
-    // VALIDACIÓN SIMPLE (puedes mejorar luego con BD)
     if($usuario == "estudiante" && $password == "12345"){
         $_SESSION['usuario'] = $usuario;
         header("Location: dashboard.php");
@@ -42,7 +41,7 @@ if(isset($_POST['login'])){
             <input type="password" name="password" placeholder="Contraseña" required>
         </div>
 
-        <!-- BOTÓN VERDE -->
+        <!-- SOLO UN BOTÓN -->
         <button type="submit" name="login" class="btn-login">
             ENTRAR
         </button>
