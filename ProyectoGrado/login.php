@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
             <input type="password" name="password" placeholder="Contraseña" required>
         </div>
 
-        <!-- SOLO UN BOTÓN -->
+        <!-- BOTÓN -->
         <button type="submit" name="login" class="btn-login">
             ENTRAR
         </button>
