@@ -133,7 +133,7 @@ Horas Actuales
 
 <br>
 
-<a href="dashboard.php" class="btn-volver">Volver</a>
+<a href="dashboard.php" class="btn-volver">Volver al menú</a>
 
 </div>
 </div>
