@@ -89,7 +89,7 @@ $resultado = mysqli_query($conexion, $sql);
 
             <br><br>
 
-            <button type="submit" name="guardar">
+             <button type="submit" name="guardar" class="btn-verde">
                 Guardar evidencia
             </button>
 
