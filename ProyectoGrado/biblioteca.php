@@ -109,7 +109,7 @@ $resultado = mysqli_query($conexion, $sql);
                     📄 Ver
                 </a>
 
-                <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=biblioteca">
+                <a href="pagos.php" class="btn-volver">⬅ Volver al menú</a>
                     🗑 Eliminar
                 </a>
 
