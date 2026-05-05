@@ -119,7 +119,7 @@ $resultado = mysqli_query($conexion, $sql);
 
         <br>
 
-        <a href="pagos.php">⬅ Volver</a>
+     <a href="pagos.php" class="btn-volver">⬅ Volver al menú</a>
 
     </div>
 
