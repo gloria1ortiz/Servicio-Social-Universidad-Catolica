@@ -77,6 +77,7 @@ $resultado = mysqli_query($conexion, $sql);
             <p><strong>Selecciona la actividad:</strong></p>
 
             <select name="actividad" required>
+                
                 <option value="">-- Seleccionar --</option>
                 <option value="Migración de cursos">Migración de cursos</option>
                 <option value="Revisión de diseños">Revisión de diseños</option>
