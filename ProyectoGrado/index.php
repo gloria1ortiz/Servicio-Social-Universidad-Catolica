@@ -10,13 +10,17 @@
 <div class="login-container">
     <div class="login-header">Portal Estudiantil</div>
     <div class="login-body">
-    <form action="login.php" method="POST">
-    
-    <input type="text" name="identificacion" placeholder="Identificación" required>
-    
-    <input type="password" name="password" placeholder="Contraseña" required>
-    
-    <button type="submit" name="login">ENTRAR</button>
+
+        <form action="login.php" method="POST">
+
+            <input type="text" name="identificacion" placeholder="Identificación" required>
+
+            <input type="password" name="password" placeholder="Contraseña" required>
+
+            <!-- BOTÓN VERDE -->
+            <button type="submit" name="login" class="btn-login">
+                ENTRAR
+            </button>
 
 </form>
         <p class="info-text">
