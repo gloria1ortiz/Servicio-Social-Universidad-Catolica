@@ -8,25 +8,35 @@
 <body>
 
 <div class="login-container">
-    <div class="login-header">Portal Estudiantil</div>
+    
+    <div class="login-header">
+        Portal Estudiantil
+    </div>
+
     <div class="login-body">
 
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" class="form-login">
 
-            <input type="text" name="identificacion" placeholder="Identificación" required>
+            <div class="input-group">
+                <input type="text" name="identificacion" placeholder="Identificación" required>
+            </div>
 
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
 
-            <!-- BOTÓN VERDE -->
             <button type="submit" name="login" class="btn-login">
                 ENTRAR
             </button>
 
-</form>
+        </form>
+
         <p class="info-text">
             Si olvidó la contraseña, comuníquese con la oficina de Admisiones y Registro Académico
         </p>
+
     </div>
+
 </div>
 
 </body>
