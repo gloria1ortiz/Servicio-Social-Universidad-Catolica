@@ -105,11 +105,11 @@ $resultado = mysqli_query($conexion, $sql);
 
                 <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
 
-                <a href="uploads/<?php echo $row['archivo']; ?>" target="_blank">
+                 <a href="uploads/<?php echo $row['archivo']; ?>" target="_blank" class="btn-verde">
                     📄 Ver
                 </a>
 
-                <a href="eliminar.php?id=<?php echo $row['id']; ?>&tipo=eventos">
+               <a href="eliminar.php?id=<?php echo $row['id']; ?>&tipo=eventos" class="btn-rojo">
                     🗑 Eliminar
                 </a>
 
