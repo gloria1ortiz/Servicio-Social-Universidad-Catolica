@@ -10,7 +10,7 @@
 <div class="login-container">
     
     <div class="login-header">
-        Portal Estudiantil
+        Servicio Social
     </div>
 
     <div class="login-body">
