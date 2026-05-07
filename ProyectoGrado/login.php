@@ -2,10 +2,12 @@
 session_start();
 include("conexion.php");
 
+$error = "";
+
 if(isset($_POST['login'])){
 
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+    $usuario = $_POST['usuario'] ?? '';
+    $password = $_POST['password'] ?? '';
 
     $sql = "SELECT * FROM usuarios 
             WHERE usuario='$usuario' 
@@ -21,16 +23,15 @@ if(isset($_POST['login'])){
         $_SESSION['nombre'] = $fila['nombre'];
         $_SESSION['rol'] = $fila['rol'];
 
-        /* SI ES ADMIN */
         if($fila['rol'] == 'admin'){
             header("Location: admin.php");
-        }else{
+        } else {
             header("Location: dashboard.php");
         }
 
         exit();
 
-    }else{
+    } else {
         $error = "❌ Usuario o contraseña incorrectos";
     }
 }
