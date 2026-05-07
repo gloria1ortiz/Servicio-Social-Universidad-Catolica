@@ -33,7 +33,7 @@ $usuario = $_SESSION['usuario'];
     <!-- CONTENIDO -->
     <div class="dashboard-body">
 
-        <h2>Bienvenid@ <?php echo $usuario; ?></h2>
+        <h2>Bienvenid@ <?php echo $_SESSION['nombre']; ?></h2>
 
         <p>
             Bienvenido al registro de horas de servicio social de la UCP.
