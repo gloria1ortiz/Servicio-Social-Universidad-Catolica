@@ -19,6 +19,7 @@ $usuario = $_SESSION['usuario'];
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
 
 <body>
