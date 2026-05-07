@@ -106,3 +106,81 @@ body {
         padding: 20px;
     }
 }
+
+/* ===== LOGIN MODERNO ===== */
+
+.login-container{
+    width: 400px;
+    margin: 80px auto;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.login-header{
+    background: #198754;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.login-body{
+    padding: 40px;
+}
+
+/* INPUTS */
+
+.login-body input{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #f8f9fa;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+/* EFECTO AL ESCRIBIR */
+
+.login-body input:focus{
+    border-color: #198754;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(25,135,84,0.2);
+}
+
+/* BOTÓN */
+
+.btn-login{
+    width: 100%;
+    background: #198754;
+    color: white !important;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* HOVER */
+
+.btn-login:hover{
+    background: #157347;
+    transform: translateY(-2px);
+}
+
+/* ERROR */
+
+.login-body p{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
