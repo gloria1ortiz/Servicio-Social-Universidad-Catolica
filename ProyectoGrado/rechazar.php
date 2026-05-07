@@ -17,7 +17,7 @@ if(!isset($_GET['id'])){
 $id = intval($_GET['id']); // seguridad básica
 
 /* ACTUALIZAR ESTADO */
-$sql = "UPDATE horas SET estado='rechazado' WHERE id=$id";
+$sql = "UPDATE evidencias SET estado='rechazado' WHERE id=$id";
 mysqli_query($conexion, $sql);
 
 /* REDIRECCIONAR */
