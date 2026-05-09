@@ -40,9 +40,9 @@ if(isset($_POST['login'])){
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <title>Servicio Social</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -55,25 +55,28 @@ if(isset($_POST['login'])){
 
     <div class="login-body">
 
-        <form method="POST">
+        <form method="POST" class="form-login">
 
-            <input type="text" 
-                   name="usuario" 
-                   placeholder="Usuario"
-                   required>
+            <div class="input-group">
+                <input 
+                    type="text"
+                    name="usuario"
+                    placeholder="Usuario"
+                    required>
+            </div>
 
-            <br><br>
+            <div class="input-group">
+                <input 
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    required>
+            </div>
 
-            <input type="password" 
-                   name="password" 
-                   placeholder="Contraseña"
-                   required>
-
-            <br><br>
-
-            <button type="submit" 
-                    name="login" 
-                    class="btn-login">
+            <button 
+                type="submit"
+                name="login"
+                class="btn-login">
 
                 ENTRAR
 
@@ -81,12 +84,12 @@ if(isset($_POST['login'])){
 
         </form>
 
-        <br>
+        <?php if(!empty($error)){ ?>
 
-        <?php if(isset($error)){ ?>
-            <p style="color:red;">
+            <p class="error-message">
                 <?php echo $error; ?>
             </p>
+
         <?php } ?>
 
     </div>
