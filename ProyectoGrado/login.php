@@ -64,24 +64,13 @@ $password = $_POST['password'] ?? '';
 
         <form method="POST">
 
-            <input type="text"
-                   name="usuario"
-                   placeholder="Usuario"
-                   required>
+            <input type="text" name="usuario" placeholder="Usuario" required>
 
-            <input type="password"
-                   name="password"
-                   placeholder="Contraseña"
-                   required>
+<input type="password" name="password" placeholder="Contraseña" required>
 
-            <button type="submit"
-                    name="login"
-                    class="btn-login">
-
-                ENTRAR
-
-            </button>
-
+           <button type="submit" name="login" class="btn-login">
+    ENTRAR
+</button>
         </form>
 
         <?php if(isset($error)){ ?>
