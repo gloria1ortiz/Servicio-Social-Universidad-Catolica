@@ -6,8 +6,8 @@ $error = "";
 
 if(isset($_POST['login'])){
 
-    $usuario = $_POST['usuario'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $usuario = $_POST['usuario'];
+    $password = $_POST['password'];
 
     $sql = "SELECT * FROM usuarios 
             WHERE usuario='$usuario' 
@@ -23,16 +23,23 @@ if(isset($_POST['login'])){
         $_SESSION['nombre'] = $fila['nombre'];
         $_SESSION['rol'] = $fila['rol'];
 
+        /* ADMIN */
         if($fila['rol'] == 'admin'){
+
             header("Location: admin.php");
-        } else {
+
+        }else{
+
             header("Location: dashboard.php");
+
         }
 
         exit();
 
-    } else {
+    }else{
+
         $error = "❌ Usuario o contraseña incorrectos";
+
     }
 }
 ?>
@@ -40,9 +47,9 @@ if(isset($_POST['login'])){
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Servicio Social</title>
-    <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<title>Servicio Social</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -55,28 +62,21 @@ if(isset($_POST['login'])){
 
     <div class="login-body">
 
-        <form method="POST" class="form-login">
+        <form method="POST">
 
-            <div class="input-group">
-                <input 
-                    type="text"
-                    name="usuario"
-                    placeholder="Usuario"
-                    required>
-            </div>
+            <input type="text"
+                   name="usuario"
+                   placeholder="Usuario"
+                   required>
 
-            <div class="input-group">
-                <input 
-                    type="password"
-                    name="password"
-                    placeholder="Contraseña"
-                    required>
-            </div>
+            <input type="password"
+                   name="password"
+                   placeholder="Contraseña"
+                   required>
 
-            <button 
-                type="submit"
-                name="login"
-                class="btn-login">
+            <button type="submit"
+                    name="login"
+                    class="btn-login">
 
                 ENTRAR
 
@@ -84,9 +84,9 @@ if(isset($_POST['login'])){
 
         </form>
 
-        <?php if(!empty($error)){ ?>
+        <?php if(isset($error)){ ?>
 
-            <p class="error-message">
+            <p style="color:red; margin-top:15px;">
                 <?php echo $error; ?>
             </p>
 
