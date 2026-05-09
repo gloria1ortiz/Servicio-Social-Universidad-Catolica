@@ -6,8 +6,8 @@ $error = "";
 
 if(isset($_POST['login'])){
 
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
+    $usuario = $_POST['usuario'] ?? '';
+$password = $_POST['password'] ?? '';
 
     $sql = "SELECT * FROM usuarios 
             WHERE usuario='$usuario' 
