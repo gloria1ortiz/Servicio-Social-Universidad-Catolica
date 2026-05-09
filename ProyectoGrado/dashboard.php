@@ -5,8 +5,13 @@ if(!isset($_SESSION['usuario'])){
     header("Location: login.php");
     exit();
 }
-?>
 
+/* SI ES ADMIN */
+if($_SESSION['rol'] == 'admin'){
+    header("Location: admin.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
