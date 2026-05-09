@@ -1,18 +1,13 @@
 <?php
 session_start();
-include("conexion.php");
 
-/* VALIDAR ADMIN */
-if(!isset($_SESSION['usuario']) || $_SESSION['usuario'] != 'admin'){
-    echo "❌ Acceso denegado";
+if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 'admin'){
+    echo "Acceso denegado";
     exit();
 }
 
-/* CONSULTAR EVIDENCIAS */
-$sql = "SELECT * FROM evidencias ORDER BY fecha DESC";
-$resultado = mysqli_query($conexion, $sql);
+include("conexion.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
