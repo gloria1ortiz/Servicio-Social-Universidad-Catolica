@@ -1,16 +1,10 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 session_start();
 
-// Validar sesión
 if(!isset($_SESSION['usuario'])){
-    header("Location: index.php");
+    header("Location: login.php");
     exit();
 }
-
-$usuario = $_SESSION['usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -19,61 +13,58 @@ $usuario = $_SESSION['usuario'];
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body>
 
 <div class="dashboard-container">
 
-    <!-- ENCABEZADO -->
     <div class="dashboard-header">
         Registro de Servicio Social - UCP
     </div>
 
-    <!-- CONTENIDO -->
     <div class="dashboard-body">
 
-        <h2>Bienvenid@ <?php echo $_SESSION['nombre']; ?></h2>
+        <h1>
+            Bienvenid@ <?php echo $_SESSION['nombre']; ?>
+        </h1>
 
-        <p>
+        <p class="dashboard-text">
             Bienvenido al registro de horas de servicio social de la UCP.
             Por favor seleccione la opción que corresponda:
         </p>
 
-        <!-- MENÚ -->
         <div class="menu-opciones">
 
-            <a href="horas.php">
+            <a href="horas.php" class="modulo-card">
                 ⏱️
                 <h3>Horas Registradas</h3>
                 <p>Consulta tus horas actuales</p>
             </a>
 
-            <a href="progreso.php">
+            <a href="progreso.php" class="modulo-card">
                 📊
                 <h3>Progreso</h3>
                 <p>Revisa tus horas acumuladas y pendientes</p>
             </a>
 
-            <a href="pagos.php">
+            <a href="pagos.php" class="modulo-card">
                 🗂️
                 <h3>Opciones de Pago</h3>
                 <p>Conoce los programas disponibles</p>
             </a>
-            
-            <a href="admin.php">
+
+            <a href="validacion.php" class="modulo-card">
                 📝
                 <h3>Estado de Validación</h3>
-                <p>Gestiona la aprobación de las horas registradas</p>
+                <p>Gestiona la aprobación de horas</p>
             </a>
 
         </div>
 
-        <!-- BOTÓN CERRAR SESIÓN -->
-        <div class="top-actions">
-            <a href="logout.php" class="btn-volver">Cerrar sesión</a>
-        </div>
+        <a href="logout.php" class="btn-rojo">
+            Cerrar sesión
+        </a>
 
     </div>
 
