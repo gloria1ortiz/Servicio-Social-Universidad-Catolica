@@ -5,51 +5,104 @@ if(!isset($_SESSION['usuario'])){
     header("Location: index.php");
     exit();
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Disponibilidades</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<div class="login-container">
+<div class="dashboard-container">
 
-    <div class="login-header">
+    <!-- HEADER -->
+    <div class="dashboard-header">
         Disponibilidades para pagar
     </div>
 
-    <div class="login-body">
+    <!-- BODY -->
+    <div class="dashboard-body">
 
-        <p>Actualmente existen las siguientes opciones:</p>
+        <p class="dashboard-text">
+            Actualmente existen las siguientes opciones para realizar servicio social:
+        </p>
 
+        <!-- TARJETAS -->
+        <div class="menu-opciones">
 
-            <!-- Módulos como botones verdes con descripción -->
-        <div class="modulos-grid">
+            <!-- BIBLIOTECA -->
             <a href="biblioteca.php" class="modulo-card">
-                <strong>📚 Biblioteca</strong><br>
-                <span class="descripcion-modulo">Entrega de libros y organización</span>
+
+                <div class="icon">📚</div>
+
+                <h3>Biblioteca</h3>
+
+                <p>
+                    Entrega de libros, organización de estanterías
+                    y apoyo administrativo.
+                </p>
+
             </a>
+
+            <!-- CIE -->
             <a href="cie.php" class="modulo-card">
-                <strong>📁 CIE</strong><br>
-                <span class="descripcion-modulo">Migración de cursos y revisión</span>
+
+                <div class="icon">📁</div>
+
+                <h3>CIE</h3>
+
+                <p>
+                    Migración de cursos, revisión de contenidos
+                    y acompañamiento académico.
+                </p>
+
             </a>
+
+            <!-- LABORATORIO -->
             <a href="laboratorio.php" class="modulo-card">
-                <strong>🔬 Laboratorio</strong><br>
-                <span class="descripcion-modulo">Inventarios y cuidado de equipos</span>
+
+                <div class="icon">🔬</div>
+
+                <h3>Laboratorio</h3>
+
+                <p>
+                    Inventarios, mantenimiento básico
+                    y cuidado de equipos tecnológicos.
+                </p>
+
             </a>
+
+            <!-- EVENTOS -->
             <a href="eventos.php" class="modulo-card">
-                <strong>📅 Eventos</strong><br>
-                <span class="descripcion-modulo">Apoyo en actividades</span>
+
+                <div class="icon">📅</div>
+
+                <h3>Eventos</h3>
+
+                <p>
+                    Apoyo logístico en actividades institucionales
+                    y eventos universitarios.
+                </p>
+
             </a>
+
         </div>
 
         <br>
-        <a href="dashboard.php" class="btn-verde">⬅ Volver al menú</a>
+
+        <!-- BOTÓN -->
+        <a href="dashboard.php" class="btn-verde">
+            ⬅ Volver al menú
+        </a>
+
     </div>
+
 </div>
+
 </body>
 </html>
