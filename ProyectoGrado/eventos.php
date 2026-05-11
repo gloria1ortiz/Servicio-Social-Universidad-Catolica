@@ -68,9 +68,9 @@ $resultado = mysqli_query($conexion, $sql);
 
         <!-- MENSAJE -->
         <?php if (isset($_SESSION['mensaje'])): ?>
-            <div style="padding: 10px; background: #e6ffe6; margin-bottom: 15px;">
-                <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
-            </div>
+           <div class="alerta">
+    <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
+</div>
         <?php endif; ?>
 
         <!-- FORMULARIO -->
@@ -103,7 +103,7 @@ $resultado = mysqli_query($conexion, $sql);
 
         <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
 
-            <div style="margin-bottom:15px;">
+           <div class="evidencia-card">
 
                 <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
 
