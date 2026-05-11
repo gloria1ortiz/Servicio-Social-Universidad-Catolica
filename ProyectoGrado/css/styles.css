@@ -58,7 +58,7 @@ body{
     padding:40px;
 }
 
-/* FORMULARIO */
+/* FORMULARIO LOGIN */
 
 .form-login{
     display:flex;
@@ -103,14 +103,14 @@ body{
     transition:0.3s;
 }
 
-/* HOVER BOTÓN */
+/* HOVER BOTÓN LOGIN */
 
 .btn-login:hover{
     transform:translateY(-2px);
     background:linear-gradient(135deg,#157347,#146c43);
 }
 
-/* MENSAJE ERROR */
+/* MENSAJES */
 
 .error-message{
     margin-top:20px;
@@ -119,8 +119,6 @@ body{
     font-size:15px;
     font-weight:bold;
 }
-
-/* TEXTO */
 
 .info-text{
     margin-top:18px;
@@ -169,16 +167,17 @@ body{
     font-size:32px;
 }
 
+.dashboard-body h2,
 .dashboard-body h3{
-    margin-bottom:15px;
     color:#198754;
+    margin-bottom:15px;
 }
 
 /* TEXTO */
 
 .dashboard-text{
     color:#555;
-    margin-bottom:35px;
+    margin-bottom:30px;
     font-size:16px;
     line-height:1.6;
 }
@@ -187,7 +186,8 @@ body{
 /* ==================== MÓDULOS ======================== */
 /* ===================================================== */
 
-.menu-opciones{
+.menu-opciones,
+.modulos-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
@@ -207,7 +207,7 @@ body{
     transition:0.3s;
 }
 
-/* HOVER */
+/* HOVER TARJETA */
 
 .modulo-card:hover{
     background:#e8f5e9;
@@ -221,80 +221,151 @@ body{
     font-size:22px;
 }
 
-/* TEXTO TARJETA */
+/* DESCRIPCIÓN */
 
-.modulo-card p{
-    color:#555;
+.descripcion-modulo{
+    display:block;
+    margin-top:10px;
     font-size:14px;
-    line-height:1.5;
+    color:#555;
+    line-height:1.4;
+}
+
+/* ===================================================== */
+/* ================= MODULOS INTERNOS ================== */
+/* ===================================================== */
+
+.modulo-content{
+    max-width:700px;
+    margin:0 auto;
+}
+
+/* LISTAS */
+
+.modulo-content ul{
+    margin-left:20px;
+    margin-bottom:25px;
+}
+
+.modulo-content li{
+    margin-bottom:8px;
+    font-size:16px;
+}
+
+/* FORMULARIO MODULO */
+
+.form-modulo{
+    background:#f8f9fa;
+    border:1px solid #dfe5df;
+    border-radius:15px;
+    padding:25px;
+    margin-top:20px;
+}
+
+/* LABELS */
+
+.form-modulo p{
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#198754;
+}
+
+/* SELECT */
+
+.form-modulo select{
+    width:100%;
+    height:50px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    padding:10px;
+    font-size:15px;
+    margin-bottom:20px;
+}
+
+/* FILE */
+
+.form-modulo input[type="file"]{
+    width:100%;
+    padding:12px;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+/* ===================================================== */
+/* ==================== EVIDENCIAS ===================== */
+/* ===================================================== */
+
+.evidencia-card{
+    background:#f8f9fa;
+    border:1px solid #e2e2e2;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+.evidencia-card strong{
+    color:#198754;
+}
+
+/* ALERTAS */
+
+.alerta{
+    background:#e8f5e9;
+    color:#198754;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-weight:bold;
 }
 
 /* ===================================================== */
 /* ===================== BOTONES ======================= */
 /* ===================================================== */
 
-/* BOTÓN VERDE */
-
-.btn-verde{
-    display:inline-block;
-    background:#198754;
-    color:white;
-    padding:12px 22px;
-    border:none;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
-    cursor:pointer;
-}
-
-/* HOVER */
-
-.btn-verde:hover{
-    background:#157347;
-}
-
-/* BOTÓN ROJO */
-
-.btn-rojo{
-    display:inline-block;
-    background:#dc3545;
-    color:white;
-    padding:12px 22px;
-    border:none;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
-    cursor:pointer;
-}
-
-/* HOVER */
-
-.btn-rojo:hover{
-    background:#b02a37;
-}
-
-/* BOTÓN VOLVER */
-
+.btn-verde,
+.btn-rojo,
 .btn-volver{
     display:inline-block;
-    margin-top:20px;
-    background:#198754;
-    color:white;
     padding:12px 22px;
+    border:none;
     border-radius:10px;
     text-decoration:none;
+    font-size:15px;
     font-weight:bold;
+    cursor:pointer;
     transition:0.3s;
 }
 
+/* VERDE */
+
+.btn-verde,
+.btn-volver{
+    background:#198754;
+    color:white;
+}
+
+.btn-verde:hover,
 .btn-volver:hover{
     background:#157347;
+    transform:translateY(-2px);
+}
+
+/* ROJO */
+
+.btn-rojo{
+    background:#dc3545;
+    color:white;
+}
+
+.btn-rojo:hover{
+    background:#bb2d3b;
+    transform:translateY(-2px);
 }
 
 /* ===================================================== */
-/* ==================== TABLAS ========================= */
+/* ===================== TABLAS ======================== */
 /* ===================================================== */
 
 table{
@@ -349,7 +420,12 @@ input[type="file"]{
         font-size:26px;
     }
 
-    .menu-opciones{
+    .login-header{
+        font-size:26px;
+    }
+
+    .menu-opciones,
+    .modulos-grid{
         grid-template-columns:1fr;
     }
 }
