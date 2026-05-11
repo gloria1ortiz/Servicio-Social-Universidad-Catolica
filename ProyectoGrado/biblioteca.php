@@ -73,7 +73,7 @@ $resultado = mysqli_query($conexion, $sql);
         <?php endif; ?>
 
         <!-- FORMULARIO -->
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" class="form-modulo">
 
             <p><strong>Selecciona la actividad:</strong></p>
 
