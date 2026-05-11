@@ -52,7 +52,9 @@ $resultado = mysqli_query($conexion, $sql);
         Módulo CIE
     </div>
 
-    <div class="dashboard-body">
+   <div class="dashboard-body">
+
+    <div class="modulo-content">
 
         <h3>Tareas disponibles</h3>
 
