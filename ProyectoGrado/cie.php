@@ -104,7 +104,7 @@ $resultado = mysqli_query($conexion, $sql);
 
         <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
 
-            <div style="margin-bottom:15px;">
+            <div class="evidencia-card">
 
                 <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
 
