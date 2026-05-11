@@ -102,7 +102,7 @@ $resultado = mysqli_query($conexion, $sql);
 
         <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
 
-            <div style="margin-bottom:15px;">
+            <div class="evidencia-card">
 
                 <strong>Actividad:</strong> <?php echo $fila['actividad']; ?><br><br>
 
