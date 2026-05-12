@@ -18,26 +18,31 @@ if(isset($_POST['guardar'])){
 
             $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
                     VALUES ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
+
             mysqli_query($conexion, $sql);
         }
     }
 
     $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
+
     header("Location: biblioteca.php");
     exit();
 }
 
 /* OBTENER EVIDENCIAS */
+
 $usuario = $_SESSION['usuario'];
 
 $sql = "SELECT * FROM evidencias 
-        WHERE usuario='$usuario' AND tipo='biblioteca'";
+        WHERE usuario='$usuario' 
+        AND tipo='biblioteca'";
 
 $resultado = mysqli_query($conexion, $sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
@@ -49,12 +54,11 @@ $resultado = mysqli_query($conexion, $sql);
 <div class="modulo-mini">
 
     <div class="dashboard-header">
-        Módulo Biblioteca
+        📚 Módulo Biblioteca
     </div>
 
-   <div class="dashboard-body">
+    <div class="dashboard-body">
 
-    <div class="modulo-content">
         <h3>Tareas disponibles</h3>
 
         <ul>
@@ -66,32 +70,53 @@ $resultado = mysqli_query($conexion, $sql);
         <p><strong>Adjuntar evidencia:</strong></p>
 
         <!-- MENSAJE -->
-        <?php if (isset($_SESSION['mensaje'])): ?>
-           <div class="alerta">
-    <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
-</div>
-        <?php endif; ?>
+
+        <?php if(isset($_SESSION['mensaje'])){ ?>
+
+            <div class="alerta">
+                <?php 
+                    echo $_SESSION['mensaje']; 
+                    unset($_SESSION['mensaje']); 
+                ?>
+            </div>
+
+        <?php } ?>
 
         <!-- FORMULARIO -->
-        <form method="POST" enctype="multipart/form-data" class="form-modulo">
 
-            <p><strong>Selecciona la actividad:</strong></p>
+        <form method="POST" 
+              enctype="multipart/form-data" 
+              class="form-modulo">
 
             <select name="modulo" required>
-                <option value="">-- Seleccionar --</option>
-                <option value="Entrega de libros">Entrega de libros</option>
-                <option value="Organización de estanterías">Organización de estanterías</option>
-                <option value="Cuidado de la biblioteca">Cuidado de la biblioteca</option>
+
+                <option value="">-- Seleccionar actividad --</option>
+
+                <option value="Entrega de libros">
+                    Entrega de libros
+                </option>
+
+                <option value="Organización de estanterías">
+                    Organización de estanterías
+                </option>
+
+                <option value="Cuidado de la biblioteca">
+                    Cuidado de la biblioteca
+                </option>
+
             </select>
 
-            <br><br>
+            <input type="file" 
+                   name="archivo[]" 
+                   multiple 
+                   required>
 
-            <input type="file" name="archivo[]" multiple required>
+            <button type="submit" 
+                    name="guardar" 
+                    class="btn-verde">
 
-            <br><br>
-
-              <button type="submit" name="guardar" class="btn-verde">
                 Guardar evidencia
+
             </button>
 
         </form>
@@ -104,40 +129,39 @@ $resultado = mysqli_query($conexion, $sql);
 
             <div class="evidencia-card">
 
-                <strong>Actividad:</strong> <?php echo $fila['actividad']; ?><br><br>
+                <strong>Actividad:</strong>
+                <?php echo $fila['actividad']; ?>
 
                 <div class="acciones">
 
-    <a href="uploads/<?php echo $fila['archivo']; ?>" 
-       target="_blank" 
-       class="btn-verde">
-       📄 Ver
-    </a>
+                    <a href="uploads/<?php echo $fila['archivo']; ?>" 
+                       target="_blank" 
+                       class="btn-verde">
 
-    <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=laboratorio" 
-       class="btn-rojo">
-       🗑 Eliminar
-    </a>
+                       📄 Ver
 
-</div>
+                    </a>
+
+                    <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=biblioteca" 
+                       class="btn-rojo">
+
+                       🗑 Eliminar
+
+                    </a>
+
+                </div>
 
             </div>
 
         <?php } ?>
 
-        <br>
-
-     <a href="pagos.php" class="btn-volver">⬅ Volver al menú</a>
-
-    </div>
+        <a href="pagos.php" class="btn-volver">
+            ⬅ Volver al menú
+        </a>
 
     </div>
 
 </div>
-
-</div>
-
-</body>
 
 </body>
 </html>
