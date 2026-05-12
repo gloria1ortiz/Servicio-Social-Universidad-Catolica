@@ -194,3 +194,13 @@ table td{
         text-align:center;
     }
 }
+
+/* ===== TARJETAS INFO ===== */
+
+.card-info{
+    background:#f1f8f3;
+    border-left:6px solid #167a3f;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
