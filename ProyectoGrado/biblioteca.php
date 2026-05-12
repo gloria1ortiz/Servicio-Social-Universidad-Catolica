@@ -106,13 +106,20 @@ $resultado = mysqli_query($conexion, $sql);
 
                 <strong>Actividad:</strong> <?php echo $fila['actividad']; ?><br><br>
 
-                <a href="uploads/<?php echo $fila['archivo']; ?>" target="_blank">
-                    📄 Ver
-                </a>
+                <div class="acciones">
 
-                <a href="pagos.php" class="btn-volver">⬅ Volver al menú</a>
-                    🗑 Eliminar
-                </a>
+    <a href="uploads/<?php echo $fila['archivo']; ?>" 
+       target="_blank" 
+       class="btn-verde">
+       📄 Ver
+    </a>
+
+    <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=laboratorio" 
+       class="btn-rojo">
+       🗑 Eliminar
+    </a>
+
+</div>
 
             </div>
 
