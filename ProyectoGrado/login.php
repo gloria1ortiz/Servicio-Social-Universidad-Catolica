@@ -1,39 +1,44 @@
 <?php
 session_start();
+include("conexion.php");
 
 $error = "";
 
 if(isset($_POST['login'])){
 
-    $usuario = $_POST['usuario'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $usuario = trim($_POST['usuario'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
-    /* LOGIN ESTUDIANTE */
-    if($usuario == "estudiante" && $password == "12345"){
+    /* CONSULTA */
+    $sql = "SELECT * FROM usuarios 
+            WHERE usuario='$usuario' 
+            AND password='$password'";
 
-        $_SESSION['usuario'] = "estudiante";
-        $_SESSION['nombre'] = "Estudiante";
-        $_SESSION['rol'] = "estudiante";
+    $resultado = mysqli_query($conexion, $sql);
 
-        header("Location: dashboard.php");
+    /* SI EXISTE */
+    if(mysqli_num_rows($resultado) > 0){
+
+        $fila = mysqli_fetch_assoc($resultado);
+
+        $_SESSION['usuario'] = $fila['usuario'];
+        $_SESSION['nombre'] = $fila['nombre'];
+        $_SESSION['rol'] = $fila['rol'];
+
+        /* ADMIN */
+        if($fila['rol'] == 'admin'){
+
+            header("Location: admin.php");
+
+        }else{
+
+            header("Location: dashboard.php");
+
+        }
+
         exit();
 
-    }
-
-    /* LOGIN ADMINISTRADOR */
-    elseif($usuario == "admin" && $password == "246810"){
-
-        $_SESSION['usuario'] = "admin";
-        $_SESSION['nombre'] = "Administrador";
-        $_SESSION['rol'] = "admin";
-
-        header("Location: admin.php");
-        exit();
-
-    }
-
-    /* ERROR */
-    else{
+    }else{
 
         $error = "❌ Usuario o contraseña incorrectos";
 
@@ -62,19 +67,23 @@ if(isset($_POST['login'])){
         <form method="POST" class="form-login">
 
             <div class="input-group">
+
                 <input 
                     type="text" 
                     name="usuario" 
                     placeholder="Usuario"
                     required>
+
             </div>
 
             <div class="input-group">
+
                 <input 
                     type="password" 
                     name="password" 
                     placeholder="Contraseña"
                     required>
+
             </div>
 
             <button 
