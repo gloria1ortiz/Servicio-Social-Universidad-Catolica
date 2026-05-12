@@ -1,6 +1,4 @@
-/* ===================================================== */
-/* ================= RESET GENERAL ===================== */
-/* ===================================================== */
+/* RESET */
 
 *{
     margin:0;
@@ -8,402 +6,161 @@
     box-sizing:border-box;
 }
 
-/* ===================================================== */
-/* ===================== BODY ========================== */
-/* ===================================================== */
+/* BODY */
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg,#eef2f3,#dfe9f3);
-    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#eef2f3,#dfe9f3);
     color:#333;
-}
-
-/* ===================================================== */
-/* ===================== LOGIN ========================= */
-/* ===================================================== */
-
-.login-page{
-    display:flex;
-    justify-content:center;
-    align-items:center;
     min-height:100vh;
 }
 
-/* CONTENEDOR LOGIN */
+/* LOGIN */
 
-.login-container{
-    width:420px;
-    margin:70px auto;
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* HEADER LOGIN */
-
-.login-header{
-    background:#198754;
-    color:white;
-    padding:25px;
-    text-align:center;
-    font-size:30px;
-    font-weight:bold;
-}
-
-/* BODY LOGIN */
-
-.login-body{
-    padding:35px;
-}
-
-/* FORM LOGIN */
-
-.form-login{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-/* INPUTS */
-
-.login-body input{
-    width:100%;
-    height:50px;
-    padding:0 15px;
-    border:1px solid #ccc;
-    border-radius:12px;
-    font-size:16px;
-    background:#f8f9fa;
-    transition:0.3s;
-}
-
-/* FOCUS */
-
-.login-body input:focus{
-    outline:none;
-    border-color:#198754;
-    background:#fff;
-    box-shadow:0 0 8px rgba(25,135,84,0.2);
-}
-
-/* BOTON LOGIN */
-
-.btn-login{
-    width:100%;
-    height:52px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(135deg,#198754,#157347);
-    color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-/* HOVER LOGIN */
-
-.btn-login:hover{
-    transform:translateY(-2px);
-    background:linear-gradient(135deg,#157347,#146c43);
-}
-
-/* MENSAJE ERROR */
-
-.error-message{
-    margin-top:20px;
-    text-align:center;
-    color:#dc3545;
-    font-size:15px;
-    font-weight:bold;
-}
-
-/* TEXTO */
-
-.info-text{
-    margin-top:18px;
-    text-align:center;
-    color:#666;
-    font-size:14px;
-    line-height:1.5;
-}
-
-/* ===================================================== */
-/* =================== DASHBOARD ======================= */
-/* ===================================================== */
-
+.login-container,
+.modulo-mini,
 .dashboard-container{
-    width:90%;
-    max-width:1100px;
-    margin:40px auto;
-    background:white;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* HEADER DASHBOARD */
-
-.dashboard-header{
-    background:#198754;
-    color:white;
-    padding:22px;
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-}
-
-/* BODY DASHBOARD */
-
-.dashboard-body{
-    padding:35px;
-}
-
-/* TITULOS */
-
-.dashboard-body h1{
-    color:#198754;
-    margin-bottom:15px;
-    font-size:32px;
-}
-
-.dashboard-body h3{
-    margin-bottom:15px;
-    color:#198754;
-}
-
-/* TEXTO */
-
-.dashboard-text{
-    color:#555;
-    margin-bottom:35px;
-    font-size:16px;
-    line-height:1.6;
-}
-
-/* ===================================================== */
-/* ==================== MODULOS GRID =================== */
-/* ===================================================== */
-
-.menu-opciones,
-.modulos-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:30px;
-}
-
-/* TARJETAS */
-
-.modulo-card{
-    background:#f1f8f3;
-    border:2px solid #d4edda;
-    border-radius:15px;
-    padding:22px;
-    text-align:center;
-    text-decoration:none;
-    color:#1b5e20;
-    transition:0.3s;
-}
-
-/* HOVER */
-
-.modulo-card:hover{
-    background:#e8f5e9;
-    transform:translateY(-5px);
-}
-
-/* TITULO */
-
-.modulo-card h3{
-    margin:12px 0;
-    font-size:22px;
-}
-
-/* TEXTO */
-
-.modulo-card p,
-.descripcion-modulo{
-    color:#555;
-    font-size:14px;
-    line-height:1.5;
-}
-
-/* ===================================================== */
-/* ============ MODULOS PEQUEÑOS Y MODERNOS ============ */
-/* ===================================================== */
-
-.modulo-mini{
     width:90%;
     max-width:700px;
     margin:40px auto;
     background:#fff;
-    border-radius:20px;
+    border-radius:18px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.12);
 }
 
-/* HEADER */
+.dashboard-container{
+    max-width:1100px;
+}
 
-.modulo-mini .dashboard-header{
+.login-header,
+.dashboard-header{
     background:#198754;
-    color:white;
-    padding:25px;
+    color:#fff;
+    padding:22px;
     text-align:center;
-    font-size:24px;
+    font-size:26px;
     font-weight:bold;
 }
 
-/* BODY */
-
-.modulo-mini .dashboard-body{
+.login-body,
+.dashboard-body{
     padding:30px;
 }
 
-/* LISTAS */
+/* INPUTS */
 
-.modulo-mini ul{
-    margin:15px 0 25px 20px;
-}
-
-.modulo-mini li{
-    margin-bottom:10px;
-    font-size:16px;
-}
-
-/* ===================================================== */
-/* ==================== FORMULARIOS ==================== */
-/* ===================================================== */
-
-.form-modulo{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-top:20px;
-}
-
-/* SELECT */
-
-.form-modulo select{
-    width:100%;
-    height:50px;
-    border:1px solid #ccc;
-    border-radius:12px;
-    padding:12px;
-    font-size:15px;
-    background:#f8f9fa;
-}
-
-/* FILE */
-
-.form-modulo input[type="file"]{
+input,
+select{
     width:100%;
     padding:14px;
-    border-radius:12px;
     border:1px solid #ccc;
+    border-radius:12px;
+    margin-bottom:18px;
     background:#f8f9fa;
+    font-size:15px;
 }
 
-/* FOCUS */
-
-.form-modulo select:focus,
-.form-modulo input[type="file"]:focus{
+input:focus,
+select:focus{
     outline:none;
     border-color:#198754;
 }
 
-/* ===================================================== */
-/* ===================== BOTONES ======================= */
-/* ===================================================== */
+/* FORMULARIOS */
 
+.form-modulo{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* BOTONES */
+
+.btn-login,
 .btn-verde,
 .btn-rojo,
 .btn-volver{
-    display:inline-block;
-    padding:12px 22px;
+    padding:12px 20px;
     border:none;
     border-radius:12px;
     text-decoration:none;
     font-weight:bold;
     cursor:pointer;
-    transition:0.3s;
+    transition:.3s;
 }
 
-/* BOTON VERDE */
-
-.btn-verde{
+.btn-login,
+.btn-verde,
+.btn-volver{
     background:#198754;
-    color:white;
+    color:#fff;
 }
-
-/* HOVER */
-
-.btn-verde:hover{
-    background:#157347;
-    transform:translateY(-2px);
-}
-
-/* BOTON ROJO */
 
 .btn-rojo{
     background:#dc3545;
-    color:white;
+    color:#fff;
 }
 
-/* HOVER */
+.btn-login:hover,
+.btn-verde:hover,
+.btn-volver:hover{
+    background:#157347;
+}
 
 .btn-rojo:hover{
     background:#bb2d3b;
 }
 
-/* BOTON VOLVER */
+/* LOGIN BUTTON */
 
-.btn-volver{
-    background:#198754;
-    color:white;
-    margin-top:20px;
+.btn-login{
+    width:100%;
 }
 
-/* HOVER */
+/* MODULOS */
 
-.btn-volver:hover{
-    background:#157347;
-    transform:translateY(-2px);
+.modulos-grid,
+.menu-opciones{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-top:25px;
 }
 
-/* BOTON FORMULARIO */
-
-.form-modulo .btn-verde{
-    width:220px;
-    height:50px;
-    font-size:16px;
+.modulo-card{
+    background:#f1f8f3;
+    border:2px solid #d4edda;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    text-decoration:none;
+    color:#1b5e20;
+    transition:.3s;
 }
 
-/* ===================================================== */
-/* ==================== EVIDENCIAS ===================== */
-/* ===================================================== */
+.modulo-card:hover{
+    background:#e8f5e9;
+    transform:translateY(-3px);
+}
+
+/* EVIDENCIAS */
 
 .evidencia-card{
     background:#f8f9fa;
     border:1px solid #ddd;
-    border-radius:14px;
-    padding:18px;
+    border-radius:12px;
+    padding:15px;
     margin-top:15px;
 }
-
-/* ACCIONES */
 
 .acciones{
     display:flex;
     gap:10px;
-    margin-top:15px;
+    margin-top:12px;
 }
 
-/* ===================================================== */
-/* ======================= TABLAS ====================== */
-/* ===================================================== */
+/* TABLAS */
 
 table{
     width:100%;
@@ -413,46 +170,28 @@ table{
 
 table th{
     background:#198754;
-    color:white;
-    padding:12px;
+    color:#fff;
 }
 
+table th,
 table td{
-    padding:12px;
     border:1px solid #ddd;
+    padding:10px;
     text-align:center;
 }
 
-/* ===================================================== */
-/* ==================== RESPONSIVE ===================== */
-/* ===================================================== */
+/* RESPONSIVE */
 
 @media(max-width:768px){
-
-    .login-container{
-        width:90%;
-    }
-
-    .dashboard-container,
-    .modulo-mini{
-        width:95%;
-    }
-
-    .dashboard-body,
-    .modulo-mini .dashboard-body{
-        padding:25px;
-    }
-
-    .menu-opciones,
-    .modulos-grid{
-        grid-template-columns:1fr;
-    }
 
     .acciones{
         flex-direction:column;
     }
 
-    .form-modulo .btn-verde{
+    .btn-verde,
+    .btn-rojo,
+    .btn-volver{
         width:100%;
+        text-align:center;
     }
 }
