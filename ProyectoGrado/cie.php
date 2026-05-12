@@ -16,28 +16,36 @@ if(isset($_POST['guardar'])){
 
         if(move_uploaded_file($tmp, $ruta)){
 
-            $sql = "INSERT INTO evidencias (usuario, actividad, archivo, tipo) 
-                    VALUES ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
+            $sql = "INSERT INTO evidencias 
+                    (usuario, actividad, archivo, tipo) 
+                    VALUES 
+                    ('$usuario', '$actividad', '$nombreArchivo', '$tipo')";
+
             mysqli_query($conexion, $sql);
         }
     }
 
     $_SESSION['mensaje'] = "✅ Archivo(s) subido(s) correctamente";
+
     header("Location: cie.php");
     exit();
 }
 
 /* OBTENER EVIDENCIAS */
+
 $usuario = $_SESSION['usuario'];
 
 $sql = "SELECT * FROM evidencias 
-        WHERE usuario='$usuario' AND tipo='cie'";
+        WHERE usuario='$usuario' 
+        AND tipo='cie'";
 
 $resultado = mysqli_query($conexion, $sql);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Módulo CIE</title>
@@ -49,95 +57,125 @@ $resultado = mysqli_query($conexion, $sql);
 <div class="modulo-mini">
 
     <div class="dashboard-header">
-        Módulo CIE
+        📁 Módulo CIE
     </div>
 
-   <div class="dashboard-body">
+    <div class="dashboard-body">
 
-    <div class="modulo-content">
+        <div class="modulo-content">
 
-        <h3>Tareas disponibles</h3>
+            <h3>Tareas disponibles</h3>
 
-        <ul>
-            <li>Migración de cursos</li>
-            <li>Revisión de diseños</li>
-            <li>Apoyo en contenidos educativos</li>
-        </ul>
+            <ul>
+                <li>Migración de cursos</li>
+                <li>Revisión de diseños</li>
+                <li>Apoyo en contenidos educativos</li>
+            </ul>
 
-        <p><strong>Adjuntar evidencia:</strong></p>
+            <p><strong>Adjuntar evidencia:</strong></p>
 
-        <!-- MENSAJE -->
-        <?php if (isset($_SESSION['mensaje'])): ?>
-            <div class="alerta">
-    <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
-</div>
-        <?php endif; ?>
+            <!-- MENSAJE -->
 
-        <!-- FORMULARIO -->
-        <form method="POST" enctype="multipart/form-data" class="form-modulo">
+            <?php if(isset($_SESSION['mensaje'])){ ?>
 
-            <p><strong>Selecciona la actividad:</strong></p>
+                <div class="alerta">
 
-            <select name="actividad" required>
-                
-                <option value="">-- Seleccionar --</option>
-                <option value="Migración de cursos">Migración de cursos</option>
-                <option value="Revisión de diseños">Revisión de diseños</option>
-                <option value="Apoyo en contenidos educativos">Apoyo en contenidos educativos</option>
-            </select>
+                    <?php 
+                        echo $_SESSION['mensaje']; 
+                        unset($_SESSION['mensaje']); 
+                    ?>
 
-            <br><br>
+                </div>
 
-            <input type="file" name="archivo[]" multiple required>
+            <?php } ?>
 
-            <br><br>
+            <!-- FORMULARIO -->
 
-            <button type="submit" name="guardar" class="btn-verde">
-                Guardar evidencia
-            </button>
+            <form method="POST" 
+                  enctype="multipart/form-data" 
+                  class="form-modulo">
 
-        </form>
+                <select name="actividad" required>
 
-        <br>
+                    <option value="">
+                        -- Seleccionar actividad --
+                    </option>
 
-        <h3>📄 Evidencias registradas</h3>
+                    <option value="Migración de cursos">
+                        Migración de cursos
+                    </option>
 
-        <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
+                    <option value="Revisión de diseños">
+                        Revisión de diseños
+                    </option>
 
-            <div class="evidencia-card">
+                    <option value="Apoyo en contenidos educativos">
+                        Apoyo en contenidos educativos
+                    </option>
 
-                <strong>Actividad:</strong> <?php echo $row['actividad']; ?><br><br>
+                </select>
 
-              <div class="acciones">
+                <input type="file" 
+                       name="archivo[]" 
+                       multiple 
+                       required>
 
-    <a href="uploads/<?php echo $fila['archivo']; ?>" 
-       target="_blank" 
-       class="btn-verde">
-       📄 Ver
-    </a>
+                <button type="submit" 
+                        name="guardar" 
+                        class="btn-verde">
 
-    <a href="eliminar.php?id=<?php echo $fila['id']; ?>&tipo=laboratorio" 
-       class="btn-rojo">
-       🗑 Eliminar
-    </a>
+                    Guardar evidencia
 
-</div>
+                </button>
 
-        <?php } ?>
+            </form>
 
-        <br>
+            <br>
 
-        <a href="pagos.php" class="btn-volver">⬅ Volver al menú</a>
+            <h3>📄 Evidencias registradas</h3>
+
+            <?php while($row = mysqli_fetch_assoc($resultado)){ ?>
+
+                <div class="evidencia-card">
+
+                    <strong>Actividad:</strong>
+
+                    <?php echo $row['actividad']; ?>
+
+                    <div class="acciones">
+
+                        <a href="uploads/<?php echo $row['archivo']; ?>" 
+                           target="_blank" 
+                           class="btn-verde">
+
+                           📄 Ver
+
+                        </a>
+
+                        <a href="eliminar.php?id=<?php echo $row['id']; ?>&tipo=cie" 
+                           class="btn-rojo">
+
+                           🗑 Eliminar
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            <?php } ?>
+
+            <br>
+
+            <a href="pagos.php" class="btn-volver">
+                ⬅ Volver al menú
+            </a>
+
+        </div>
 
     </div>
 
-    </div>
-
 </div>
-
-</div>
-
-</body>
 
 </body>
 </html>
