@@ -46,7 +46,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 <body>
 
-<div class="dashboard-container">
+<div class="modulo-mini">
 
     <div class="dashboard-header">
         Módulo CIE
