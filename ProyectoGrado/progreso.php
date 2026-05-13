@@ -28,7 +28,7 @@ $horas_pendientes = max(0, $horas_requeridas - $total_horas);
 /* PORCENTAJE */
 $porcentaje = 0;
 if($horas_requeridas > 0){
-    $porcentaje = ($total_horas / $horas_requeridas) * 100;
+    $porcentaje = min(100, ($total_horas / $horas_requeridas) * 100);
 }
 ?>
 
