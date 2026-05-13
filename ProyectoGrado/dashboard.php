@@ -1,17 +1,13 @@
 <?php
 session_start();
 
+/* VALIDAR SESIÓN */
 if(!isset($_SESSION['usuario'])){
     header("Location: login.php");
     exit();
 }
-
-/* SI ES ADMIN */
-if($_SESSION['rol'] == 'admin'){
-    header("Location: admin.php");
-    exit();
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,7 +61,19 @@ if($_SESSION['rol'] == 'admin'){
                 <p>Gestiona la aprobación de horas</p>
             </a>
 
+            <?php if($_SESSION['rol'] == 'admin'){ ?>
+
+            <a href="admin.php" class="modulo-card">
+                🛠️
+                <h3>Panel Administrador</h3>
+                <p>Gestionar validaciones y evidencias</p>
+            </a>
+
+            <?php } ?>
+
         </div>
+
+        <br>
 
         <a href="logout.php" class="btn-rojo">
             Cerrar sesión
