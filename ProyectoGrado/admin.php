@@ -1,13 +1,20 @@
 <?php
 session_start();
 
+/* VALIDAR SESIÓN ADMIN */
 if(!isset($_SESSION['usuario']) || $_SESSION['rol'] != 'admin'){
     echo "Acceso denegado";
     exit();
 }
 
+/* CONEXIÓN */
 include("conexion.php");
+
+/* CONSULTA */
+$sql = "SELECT * FROM evidencias ORDER BY id DESC";
+$resultado = mysqli_query($conexion, $sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,22 +47,37 @@ include("conexion.php");
                 <th>Acciones</th>
             </tr>
 
-            <?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
+            <?php 
+            /* VERIFICAR SI HAY DATOS */
+            if(mysqli_num_rows($resultado) > 0){
+
+                while($fila = mysqli_fetch_assoc($resultado)){ 
+            ?>
 
             <tr>
 
-                <td><?php echo $fila['usuario']; ?></td>
-
-                <td><?php echo ucfirst($fila['tipo']); ?></td>
-
-                <td><?php echo $fila['actividad']; ?></td>
-
-                <td><?php echo $fila['horas']; ?></td>
+                <td>
+                    <?php echo $fila['usuario']; ?>
+                </td>
 
                 <td>
+                    <?php echo ucfirst($fila['tipo']); ?>
+                </td>
+
+                <td>
+                    <?php echo $fila['actividad']; ?>
+                </td>
+
+                <td>
+                    <?php echo $fila['horas']; ?>
+                </td>
+
+                <td>
+
                     <a href="uploads/<?php echo $fila['archivo']; ?>" target="_blank">
                         Ver archivo
                     </a>
+
                 </td>
 
                 <td>
@@ -64,11 +86,17 @@ include("conexion.php");
                     $estado = strtolower($fila['estado']);
 
                     if($estado == "pendiente"){
+
                         echo "🟡 Pendiente";
+
                     }elseif($estado == "aprobado"){
+
                         echo "🟢 Aprobado";
+
                     }else{
+
                         echo "🔴 Rechazado";
+
                     }
                     ?>
 
@@ -92,6 +120,20 @@ include("conexion.php");
 
                     <?php } ?>
 
+                </td>
+
+            </tr>
+
+            <?php 
+                }
+
+            } else { 
+            ?>
+
+            <tr>
+
+                <td colspan="7" align="center">
+                    No hay evidencias registradas
                 </td>
 
             </tr>
