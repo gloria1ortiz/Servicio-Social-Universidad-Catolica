@@ -6,7 +6,7 @@ $error = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    $usuario = trim($_POST['usuario'] ?? '');
+    $usuario = trim($_POST['identificacion'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
     /* CONSULTA */
