@@ -4,7 +4,7 @@ include("conexion.php");
 
 $error = "";
 
-if(isset($_POST['login'])){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $usuario = trim($_POST['usuario'] ?? '');
     $password = trim($_POST['password'] ?? '');
